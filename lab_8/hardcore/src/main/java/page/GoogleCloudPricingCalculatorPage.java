@@ -104,9 +104,6 @@ public class GoogleCloudPricingCalculatorPage {
     public GoogleCloudPricingCalculatorPage selectSeries() {
         seriesSelect.click();
         seriesChoice = findElementByLocator(seriesChoiceLocator);
-        new WebDriverWait(driver, 30)
-                .until(ExpectedConditions
-                        .elementToBeClickable(seriesChoice));
         seriesChoice.click();
         addGPUsCheckbox = findElementByLocator(addGPUsCheckboxLocator);
         localSSDSelect = findElementByLocator(localSSDSelectLocator);
