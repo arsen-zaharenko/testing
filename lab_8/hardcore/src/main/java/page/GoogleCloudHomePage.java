@@ -27,7 +27,8 @@ public class GoogleCloudHomePage {
     }
 
     public GoogleCloudSearchPage searchTerm(String term) {
-        searchButton.sendKeys(term + Keys.ENTER);
+        driver.get("https://cloud.google.com/s/results?q=" + term);
+      //searchButton.sendKeys(term + Keys.ENTER);
         return new GoogleCloudSearchPage(driver);
     }
 
