@@ -1,9 +1,8 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.config.OperatingSystem;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -21,8 +20,9 @@ public class GoogleCloudYOPmailTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
-        WebDriverManager.firefoxdriver().operatingSystem(OperatingSystem.LINUX).setup();
-        driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 2000));
     }
 

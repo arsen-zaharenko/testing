@@ -125,6 +125,9 @@ public class GoogleCloudPricingCalculatorPage {
         numberOfGPUsSelect = findElementByLocator(numberOfGPUsSelectLocator);
         numberOfGPUsSelect.click();
         numberOfGPUsChoice = findElementByLocator(numberOfGPUsChoiceLocator);
+        new WebDriverWait(driver,10)
+                .until(ExpectedConditions
+                        .elementToBeClickable(numberOfGPUsChoice));
         numberOfGPUsChoice.click();
         GPUTypeSelect = findElementByLocator(GPUTypeSelectLocator);
         GPUTypeSelect.click();
