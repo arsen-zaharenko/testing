@@ -1,3 +1,5 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.config.OperatingSystem;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +21,7 @@ public class GoogleCloudYOPmailTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
+        WebDriverManager.firefoxdriver().operatingSystem(OperatingSystem.LINUX).setup();
         driver = new FirefoxDriver();
         driver.manage().window().setSize(new Dimension(1000, 2000));
     }
