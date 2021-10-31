@@ -108,7 +108,7 @@ public class GoogleCloudPricingCalculatorPage {
     public GoogleCloudPricingCalculatorPage selectSeries() {
         seriesSelect.click();
         seriesChoice = findElementByLocator(seriesChoiceLocator);
-        new WebDriverWait(driver,20)
+        new WebDriverWait(driver,30)
                 .until(ExpectedConditions
                         .elementToBeClickable(seriesChoice)).click();
         addGPUsCheckbox = findElementByLocator(addGPUsCheckboxLocator);
@@ -128,10 +128,9 @@ public class GoogleCloudPricingCalculatorPage {
         numberOfGPUsSelect = findElementByLocator(numberOfGPUsSelectLocator);
         numberOfGPUsSelect.click();
         numberOfGPUsChoice = findElementByLocator(numberOfGPUsChoiceLocator);
-        new WebDriverWait(driver,10)
+        new WebDriverWait(driver,20)
                 .until(ExpectedConditions
-                        .elementToBeClickable(numberOfGPUsChoice));
-        numberOfGPUsChoice.click();
+                        .elementToBeClickable(numberOfGPUsChoice)).click();
         GPUTypeSelect = findElementByLocator(GPUTypeSelectLocator);
         GPUTypeSelect.click();
         GPUTypeChoice = findElementByLocator(GPUTypeChoiceLocator);
@@ -175,27 +174,22 @@ public class GoogleCloudPricingCalculatorPage {
     }
 
     public String copyVMClass() {
-        System.out.println(copyVMClassField.getText());
         return copyVMClassField.getText().replace("VM class:","").trim();
     }
 
     public String copyInstanceType() {
-        System.out.println(copyInstanceTypeField.getText());
         return copyInstanceTypeField.getText().replace("Instance type:","").replace("\nCommitted Use Discount applied","").trim();
     }
 
     public String copyRegion() {
-        System.out.println(copyRegionField.getText());
         return copyRegionField.getText().replace("Region:","").trim();
     }
 
     public String copyLocalSSD() {
-        System.out.println(copyLocalSSDField.getText());
         return copyLocalSSDField.getText().replace("Local SSD:","").replace("\nCommitted Use Discount applied","").trim();
     }
 
     public String copyCommitmentTerm() {
-        System.out.println(copyCommitmentTermField.getText());
         return copyCommitmentTermField.getText().replace("Commitment term:","").trim();
     }
 
