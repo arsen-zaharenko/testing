@@ -199,7 +199,7 @@ public class GoogleCloudPricingCalculatorPage {
         return copyCommitmentTermField.getText().replace("Commitment term:","").trim();
     }
 
-    public String copyCost() {
+    public String copyInstancesCost() {
         return copyCostField.getText().replace("Total Estimated Cost: USD","").replace(" per 1 month","").trim();
     }
 

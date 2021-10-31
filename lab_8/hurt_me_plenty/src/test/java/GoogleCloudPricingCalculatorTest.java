@@ -27,116 +27,33 @@ public class GoogleCloudPricingCalculatorTest {
     }
 
     @Test
-    void VMClassCompareTest() {
+    void VMClass_InstanceType_Region_LocalSSD_CommitmentTerm_InstancesCost_CompareTest() {
         GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
 
-        final String VMClass = GoogleCloudPage.openHomePage()
-                                                    .searchTerm(TERM)
-                                                    .openCalculator()
-                                                    .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                                    .selectSeries()
-                                                    .selectMachineType()
-                                                    .addGPUs()
-                                                    .addSSD()
-                                                    .selectDatacenter()
-                                                    .selectCommittedUsage()
-                                                    .addToEstimate()
-                                                    .copyVMClass();
+        final GoogleCloudPricingCalculatorPage calculatorPage = GoogleCloudPage.openHomePage()
+                                                                               .searchTerm(TERM)
+                                                                               .openCalculator()
+                                                                               .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
+                                                                               .selectSeries()
+                                                                               .selectMachineType()
+                                                                               .addGPUs()
+                                                                               .addSSD()
+                                                                               .selectDatacenter()
+                                                                               .selectCommittedUsage()
+                                                                               .addToEstimate();
+
+        final String VMClass = calculatorPage.copyVMClass();
+        final String instanceType = calculatorPage.copyInstanceType();
+        final String region = calculatorPage.copyRegion();
+        final String localSSD = calculatorPage.copyLocalSSD();
+        final String commitmentTerm = calculatorPage.copyCommitmentTerm();
+        final String instancesCost = calculatorPage.copyInstancesCost();
+
         Assert.assertEquals(VMClass, VM_CLASS);
-    }
-
-    @Test
-    void instanceTypeCompareTest() {
-        GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
-
-        final String instanceType = GoogleCloudPage.openHomePage()
-                                                  .searchTerm(TERM)
-                                                  .openCalculator()
-                                                  .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                                  .selectSeries()
-                                                  .selectMachineType()
-                                                  .addGPUs()
-                                                  .addSSD()
-                                                  .selectDatacenter()
-                                                  .selectCommittedUsage()
-                                                  .addToEstimate()
-                                                  .copyInstanceType();
         Assert.assertEquals(instanceType, INSTANCE_TYPE);
-    }
-
-    @Test
-    void regionCompareTest() {
-        GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
-
-        final String region = GoogleCloudPage.openHomePage()
-                                             .searchTerm(TERM)
-                                             .openCalculator()
-                                             .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                             .selectSeries()
-                                             .selectMachineType()
-                                             .addGPUs()
-                                             .addSSD()
-                                             .selectDatacenter()
-                                             .selectCommittedUsage()
-                                             .addToEstimate()
-                                             .copyRegion();
         Assert.assertEquals(region, REGION);
-    }
-
-    @Test
-    void localSSDCompareTest() {
-        GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
-
-        final String localSSD = GoogleCloudPage.openHomePage()
-                                               .searchTerm(TERM)
-                                               .openCalculator()
-                                               .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                               .selectSeries()
-                                               .selectMachineType()
-                                               .addGPUs()
-                                               .addSSD()
-                                               .selectDatacenter()
-                                               .selectCommittedUsage()
-                                               .addToEstimate()
-                                               .copyLocalSSD();
         Assert.assertEquals(localSSD, LOCAL_SSD);
-    }
-
-    @Test
-    void commitmentTermCompareTest() {
-        GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
-
-        final String commitmentTerm = GoogleCloudPage.openHomePage()
-                                                     .searchTerm(TERM)
-                                                     .openCalculator()
-                                                     .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                                     .selectSeries()
-                                                     .selectMachineType()
-                                                     .addGPUs()
-                                                     .addSSD()
-                                                     .selectDatacenter()
-                                                     .selectCommittedUsage()
-                                                     .addToEstimate()
-                                                     .copyCommitmentTerm();
         Assert.assertEquals(commitmentTerm, COMMITMENT_TERM);
-    }
-
-    @Test
-    void costCompareTest() {
-        GoogleCloudHomePage GoogleCloudPage = new GoogleCloudHomePage(driver);
-
-        final String instancesCost = GoogleCloudPage.openHomePage()
-                                                    .searchTerm(TERM)
-                                                    .openCalculator()
-                                                    .pasteNumberOfInstances(NUMBER_OF_INSTANCES)
-                                                    .selectSeries()
-                                                    .selectMachineType()
-                                                    .addGPUs()
-                                                    .addSSD()
-                                                    .selectDatacenter()
-                                                    .selectCommittedUsage()
-                                                    .addToEstimate()
-                                                    .copyCost();
         Assert.assertEquals(instancesCost, INSTANCES_COST);
     }
 
