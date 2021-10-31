@@ -27,54 +27,23 @@ public class PastebinCreateBashPasteTest {
     }
 
     @Test
-    public void pageHeaderCompareTest() {
+    public void createBashPaste_pageHeaderCompare_checkSyntaxHighlighting_checkCodeTest() {
         PastebinHomePage homePage = new PastebinHomePage(driver);
-        final String pageHeader = homePage.openHomePage()
-                                          .pasteCode(CODE)
-                                          .selectSyntaxHighlighting()
-                                          .selectExpiration()
-                                          .pasteName(NAME)
-                                          .createPaste()
-                                          .copyPageHeader();
+        final PastebinCreatePasteResultsPage resultsPage = homePage.openHomePage()
+                                                                   .pasteCode(CODE)
+                                                                   .selectSyntaxHighlighting()
+                                                                   .selectExpiration()
+                                                                   .pasteName(NAME)
+                                                                   .createPaste();
+        final boolean isInitialized = resultsPage.isInitialized();
+        final String pageHeader = resultsPage.copyPageHeader();
+        final boolean isHighlighting = resultsPage.isHighlighting(SYNTAX);
+        final boolean isEquals = resultsPage.isEquals(CODE);
+
+        Assert.assertTrue(isInitialized);
         Assert.assertEquals(pageHeader, PAGE_HEADER);
-    }
-
-    @Test
-    public void checkSyntaxHighlightingTest() {
-        PastebinHomePage homePage = new PastebinHomePage(driver);
-        final boolean isHighlighting = homePage.openHomePage()
-                                               .pasteCode(CODE)
-                                               .selectSyntaxHighlighting()
-                                               .selectExpiration()
-                                               .pasteName(NAME)
-                                               .createPaste()
-                                               .isHighlighting(SYNTAX);
         Assert.assertTrue(isHighlighting);
-    }
-
-    @Test
-    public void checkCodeTest() {
-        PastebinHomePage homePage = new PastebinHomePage(driver);
-        final boolean isEquals = homePage.openHomePage()
-                                         .pasteCode(CODE)
-                                         .selectSyntaxHighlighting()
-                                         .selectExpiration()
-                                         .pasteName(NAME)
-                                         .createPaste()
-                                         .isEquals(CODE);
         Assert.assertTrue(isEquals);
-    }
-
-    @Test
-    public void createBashPasteTest() {
-        PastebinHomePage homePage = new PastebinHomePage(driver);
-        PastebinCreatePasteResultsPage resultsPage = homePage.openHomePage()
-                                                             .pasteCode(CODE)
-                                                             .selectSyntaxHighlighting()
-                                                             .selectExpiration()
-                                                             .pasteName(NAME)
-                                                             .createPaste();
-        Assert.assertTrue(resultsPage.isInitialized());
     }
 
     @AfterMethod(alwaysRun = true)
