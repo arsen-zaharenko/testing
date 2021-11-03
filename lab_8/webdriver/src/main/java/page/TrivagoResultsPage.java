@@ -21,7 +21,7 @@ public class TrivagoResultsPage {
     }
 
     private WebElement findElementByLocator(By locator) {
-        return new WebDriverWait(driver, 60)
+        return new WebDriverWait(driver, 20)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(locator));
     }
