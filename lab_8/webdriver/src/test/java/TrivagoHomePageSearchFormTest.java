@@ -90,7 +90,6 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
-
     }
 
     @AfterMethod(alwaysRun = true)
@@ -124,7 +123,7 @@ public class TrivagoHomePageSearchFormTest {
         }
     }
 
-    public String getTextStaleElementReferenceException(WebElement element, By locator) {
+    private String getTextStaleElementReferenceException(WebElement element, By locator) {
         try {
             return element.getText();
         } catch (StaleElementReferenceException e) {
