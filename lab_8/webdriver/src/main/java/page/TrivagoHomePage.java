@@ -16,7 +16,7 @@ public class TrivagoHomePage {
 
     private By numberOfAdultsInputLocator = By.xpath("//input[@id='number-input-13']");
 
-    private By searchButtonLocator = By.xpath("//div[@class='SearchFormFlyout_searchButtonWrapperSingleLine__3Ivc5']");
+    private By searchButtonLocator = By.xpath("//span[text()='Search']");
 
     public TrivagoHomePage(WebDriver driver) {
         this.driver = driver;
