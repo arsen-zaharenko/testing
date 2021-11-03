@@ -53,12 +53,12 @@ public class TrivagoHomePageSearchFormTest {
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
-        final String bigGroupHintText = homePage.openHomePage()
+        final boolean bigGroupHintText = homePage.openHomePage()
                                                 .openRoomForm()
                                                 .fillAdultsField(BIG_NUMBER_OF_ADULTS)
                                                 .getBigGroupHintText();
 
-        Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
+        Assert.assertTrue(bigGroupHintText);
     }
 /*
     @Test
