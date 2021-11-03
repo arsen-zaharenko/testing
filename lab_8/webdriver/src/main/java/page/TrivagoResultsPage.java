@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TrivagoResultsPage {
     private WebDriver driver;
 
-    private By accommodationListLocator = By.xpath("//ol[@data-testid='accommodation-list']");
+    private By accommodationListLocator = By.xpath("//ol[@id='js_itemlist']");
 
     public TrivagoResultsPage(WebDriver driver) {
         this.driver = driver;
