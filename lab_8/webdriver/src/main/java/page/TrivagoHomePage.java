@@ -10,7 +10,7 @@ public class TrivagoHomePage {
 
     private By destinationInputLocator = By.xpath("//div[@class='relative h-11 flex items-stretch overflow-hidden 2xl:rounded-sm']/input");
 
-    private By roomFormLocator = By.xpath("//div[@class='SearchFormFlyout_roomSelector__3rks1']/button");
+    private By roomFormLocator = By.xpath("//button[@class='dealform-button dealform-button--guests js-dealform-button-guests']");
 
     private By roomFormDivLocator = By.xpath("//div[@class='pt-4 px-2']");
 
