@@ -30,9 +30,9 @@ public class TrivagoHomePageSearchFormTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        driver = new FirefoxDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
     }
 
