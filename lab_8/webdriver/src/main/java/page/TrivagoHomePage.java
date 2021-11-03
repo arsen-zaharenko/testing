@@ -8,7 +8,7 @@ public class TrivagoHomePage {
     private WebDriver driver;
     private static final String HOMEPAGE_URL = "https://www.trivago.com/";
 
-    private By destinationInputLocator = By.xpath("//div[@class='relative h-11 flex items-stretch overflow-hidden 2xl:rounded-sm']/input");
+    private By destinationInputLocator = By.xpath("//input[@id='querytext']");
 
     private By roomFormLocator = By.xpath("//button[@class='dealform-button dealform-button--guests js-dealform-button-guests']");
 
