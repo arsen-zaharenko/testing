@@ -23,7 +23,7 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement destinationException;
     private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[2]");
 
-    private By roomFormApplyButtonLocator = By.xpath("//button[@data-testid='guest-selector-apply']");
+    private By roomFormApplyButtonLocator = By.xpath("//button[@data-role='applyConfigBtn']");
 
     private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//div[@class='SearchFormFlyout_roomSelector__3rks1']/button/span/span[2]/span[2]");
