@@ -42,10 +42,8 @@ public class TrivagoHomePage {
         return this;
     }
 
-    public boolean getBigGroupHintText() {
-//        bigGroupHint = findElementByLocatorStaleElementReferenceException(bigGroupHintLocator);
-//        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
-        return roomFormDiv.isDisplayed();
+    public String getBigGroupHintText() {
+        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
     }
     
     public TrivagoHomePage fillAdultsField(int numberOfAdults) {
@@ -86,11 +84,12 @@ public class TrivagoHomePage {
         }
     }
     
-    private String getTextStaleElementReferenceException(WebElement element, By locator) {
+    private String getTextStaleElementReferenceException(By locator) {
         try {
+            WebElement element = findElementByLocatorStaleElementReferenceException(locator);
             return element.getText();
         } catch (StaleElementReferenceException e) {
-            element = findElementByLocatorStaleElementReferenceException(locator);
+            WebElement element = findElementByLocatorStaleElementReferenceException(locator);
             return element.getText();
         }
     }
