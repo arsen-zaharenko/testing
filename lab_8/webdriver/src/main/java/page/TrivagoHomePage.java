@@ -16,7 +16,7 @@ public class TrivagoHomePage {
     private By roomFormDivLocator = By.xpath("//div[@class='guest-selector__content clearfix']");
 
     private WebElement bigGroupHint;
-    private By bigGroupHintLocator = By.xpath("//a[@class='block text-m text-blue-700 hover:underline mb-4']");
+    private By bigGroupHintLocator = By.xpath("//div[@class='guest-selector__content clearfix']/a");
     
     private By numberOfAdultsInputLocator = By.xpath("//input[@class='input room-filters__input']");
 
