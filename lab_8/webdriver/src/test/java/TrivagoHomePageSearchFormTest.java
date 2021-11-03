@@ -26,7 +26,7 @@ public class TrivagoHomePageSearchFormTest {
     private By roomFormApplyButtonLocator = By.xpath("//button[@data-role='applyConfigBtn']");
 
     private WebElement numberOfAdultsSpan;
-    private By numberOfAdultsSpanLocator = By.xpath("//div[@class='SearchFormFlyout_roomSelector__3rks1']/button/span/span[2]/span[2]");
+    private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
