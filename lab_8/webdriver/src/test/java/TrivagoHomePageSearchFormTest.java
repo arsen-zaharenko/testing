@@ -24,7 +24,7 @@ public class TrivagoHomePageSearchFormTest {
     private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[2]");
 
     private WebElement bigGroupHint;
-    private By bigGroupHintLocator = By.xpath("//a[@class='block text-m text-blue-700 hover:underline mb-4']");
+    private By bigGroupHintLocator = By.xpath("//a[@class='guest-selector__link']");
 
     private By roomFormApplyButtonLocator = By.xpath("//button[@data-testid='guest-selector-apply']");
 
