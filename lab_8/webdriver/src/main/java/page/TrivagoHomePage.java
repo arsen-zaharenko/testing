@@ -15,7 +15,6 @@ public class TrivagoHomePage {
     private WebElement roomFormDiv;
     private By roomFormDivLocator = By.xpath("//div[@class='guest-selector__content clearfix']");
 
-    private WebElement bigGroupHint;
     private By bigGroupHintLocator = By.xpath("//div[@class='guest-selector__content clearfix']/a");
     
     private By numberOfAdultsInputLocator = By.xpath("//input[@class='input room-filters__input']");
@@ -43,7 +42,7 @@ public class TrivagoHomePage {
     }
 
     public String getBigGroupHintText() {
-        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
+        return getTextStaleElementReferenceException(bigGroupHintLocator);
     }
     
     public TrivagoHomePage fillAdultsField(int numberOfAdults) {
