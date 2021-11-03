@@ -14,6 +14,9 @@ public class TrivagoHomePage {
 
     private By roomFormDivLocator = By.xpath("//div[@class='guest-selector__content clearfix']");
 
+    private WebElement bigGroupHint;
+    private By bigGroupHintLocator = By.xpath("//div[@class='guest-selector__content clearfix']/a");
+    
     private By numberOfAdultsInputLocator = By.xpath("//input[@class='input room-filters__input']");
 
     private By searchButtonLocator = By.xpath("//span[text()='Search']");
@@ -38,6 +41,11 @@ public class TrivagoHomePage {
         return this;
     }
 
+    public String getBigGroupHintText() {
+        bigGroupHint = findElementByLocatorStaleElementReferenceException(bigGroupHintLocator);
+        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
+    }
+    
     public TrivagoHomePage fillAdultsField(int numberOfAdults) {
         findElementByLocatorAndClickStaleElementReferenceException(numberOfAdultsInputLocator)
                 .sendKeys(Keys.DELETE + String.valueOf(numberOfAdults));
@@ -56,6 +64,14 @@ public class TrivagoHomePage {
                         .presenceOfElementLocated(locator));
     }
 
+    private WebElement findElementByLocatorStaleElementReferenceException(By locator) {
+        try {
+            return findElementByLocator(locator);
+        } catch (StaleElementReferenceException e) {
+            return findElementByLocator(locator);
+        }
+    }
+    
     private WebElement findElementByLocatorAndClickStaleElementReferenceException(By locator) {
         try {
             WebElement element = findElementByLocator(locator);
@@ -65,6 +81,15 @@ public class TrivagoHomePage {
             WebElement element = findElementByLocator(locator);
             element.click();
             return element;
+        }
+    }
+    
+    private String getTextStaleElementReferenceException(WebElement element, By locator) {
+        try {
+            return element.getText();
+        } catch (StaleElementReferenceException e) {
+            element = findElementByLocatorStaleElementReferenceException(locator);
+            return element.getText();
         }
     }
 }
