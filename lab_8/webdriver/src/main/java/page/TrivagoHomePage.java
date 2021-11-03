@@ -12,6 +12,7 @@ public class TrivagoHomePage {
 
     private By roomFormLocator = By.xpath("//button[@class='dealform-button dealform-button--guests js-dealform-button-guests']");
 
+    private WebElement roomFormDiv;
     private By roomFormDivLocator = By.xpath("//div[@class='guest-selector__content clearfix']");
 
     private WebElement bigGroupHint;
@@ -41,15 +42,16 @@ public class TrivagoHomePage {
         return this;
     }
 
-    public String getBigGroupHintText() {
-        bigGroupHint = findElementByLocatorStaleElementReferenceException(bigGroupHintLocator);
-        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
+    public boolean getBigGroupHintText() {
+//        bigGroupHint = findElementByLocatorStaleElementReferenceException(bigGroupHintLocator);
+//        return getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
+        return roomFormDiv.isDisplayed();
     }
     
     public TrivagoHomePage fillAdultsField(int numberOfAdults) {
         findElementByLocatorAndClickStaleElementReferenceException(numberOfAdultsInputLocator)
                 .sendKeys(Keys.DELETE + String.valueOf(numberOfAdults));
-        findElementByLocatorAndClickStaleElementReferenceException(roomFormDivLocator);
+        roomFormDiv = findElementByLocatorAndClickStaleElementReferenceException(roomFormDivLocator);
         return this;
     }
 
