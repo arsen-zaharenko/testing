@@ -35,7 +35,7 @@ public class TrivagoHomePageSearchFormTest {
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
     }
-/*
+
     @Test
     public void emptyDestinationFieldTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -79,7 +79,7 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
     }
-*/
+
     @Test
     public void findHotelsTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
