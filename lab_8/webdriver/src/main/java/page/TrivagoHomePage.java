@@ -47,7 +47,7 @@ public class TrivagoHomePage {
     
     public TrivagoHomePage fillAdultsField(int numberOfAdults) {
         findElementByLocatorAndClickStaleElementReferenceException(numberOfAdultsInputLocator)
-                .sendKeys(Keys.DELETE + String.valueOf(numberOfAdults));
+                .sendKeys(Keys.BACK_SPACE + String.valueOf(numberOfAdults));
         roomFormDiv = findElementByLocatorAndClickStaleElementReferenceException(roomFormDivLocator);
         return this;
     }
