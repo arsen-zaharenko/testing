@@ -21,7 +21,7 @@ public class TrivagoHomePageSearchFormTest {
     private static final int MAX_NUMBER_OF_ADULTS = 48;
 
     private WebElement destinationException;
-    private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[1]");
+    private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[2]");
 
     private WebElement bigGroupHint;
     private By bigGroupHintLocator = By.xpath("//a[@class='block text-m text-blue-700 hover:underline mb-4']");
@@ -51,7 +51,7 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
-
+/*
     @Test
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -97,7 +97,7 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertTrue(resultsPage.isInitialized());
 
     }
-
+*/
     @AfterMethod(alwaysRun = true)
     public void tearDownBrowser() {
         driver = null;
