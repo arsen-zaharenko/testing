@@ -23,9 +23,6 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement destinationException;
     private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[2]");
 
-    private WebElement bigGroupHint;
-    private By bigGroupHintLocator = By.xpath("//div[@class='guest-selector__content clearfix']/a");
-
     private By roomFormApplyButtonLocator = By.xpath("//button[@data-testid='guest-selector-apply']");
 
     private WebElement numberOfAdultsSpan;
@@ -55,13 +52,11 @@ public class TrivagoHomePageSearchFormTest {
     @Test
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
-        homePage.openHomePage()
-                .openRoomForm()
-                .fillAdultsField(BIG_NUMBER_OF_ADULTS);
 
-        bigGroupHint = findElementByLocatorStaleElementReferenceException(bigGroupHintLocator);
-
-        final String bigGroupHintText = getTextStaleElementReferenceException(bigGroupHint, bigGroupHintLocator);
+        final String bigGroupHintText = homePage.openHomePage()
+                                                .openRoomForm()
+                                                .fillAdultsField(BIG_NUMBER_OF_ADULTS)
+                                                .getBigGroupHintText();
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
     }
