@@ -21,7 +21,7 @@ public class TrivagoHomePageSearchFormTest {
     private static final int MAX_NUMBER_OF_ADULTS = 48;
 
     private WebElement destinationException;
-    private By destinationExceptionLocator = By.xpath("//*[contains(text(),"To start, tell us where you're going")]");
+    private By destinationExceptionLocator = By.xpath("//*[contains(text(),\"To start, tell us where you're going\")]");
 
     private WebElement bigGroupHint;
     private By bigGroupHintLocator = By.xpath("//a[@class='block text-m text-blue-700 hover:underline mb-4']");
@@ -104,7 +104,7 @@ public class TrivagoHomePageSearchFormTest {
     }
 
     private WebElement findElementByLocator(By locator) {
-        return new WebDriverWait(driver, 20)
+        return new WebDriverWait(driver, 60)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(locator));
     }
