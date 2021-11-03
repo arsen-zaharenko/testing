@@ -48,7 +48,7 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
-
+*/
     @Test
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -60,7 +60,7 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
     }
-*/
+/*
     @Test
     public void maxNumberOfAdultsTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
