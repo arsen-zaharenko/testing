@@ -1,6 +1,6 @@
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.FirefoxDriver;
+import org.openqa.selenium.chrome.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -30,14 +30,14 @@ public class TrivagoHomePageSearchFormTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
-        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.setHeadless(true);
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
     }
 
     @Test
-    public void emptyDestinationFieldTest() {
+    public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .searchHotels();
@@ -47,23 +47,14 @@ public class TrivagoHomePageSearchFormTest {
         final String destinationExceptionText = getTextStaleElementReferenceException(destinationException, destinationExceptionLocator);
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
-    }
-
-    @Test
-    public void bigGroupHintTest() {
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
-
+    
         final String bigGroupHintText = homePage.openHomePage()
                                                 .openRoomForm()
                                                 .fillAdultsField(BIG_NUMBER_OF_ADULTS)
                                                 .getBigGroupHintText();
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
-    }
-
-    @Test
-    public void maxNumberOfAdultsTest() {
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
+        
         homePage.openHomePage()
                 .openRoomForm()
                 .fillAdultsField(BIG_NUMBER_OF_ADULTS);
@@ -78,11 +69,7 @@ public class TrivagoHomePageSearchFormTest {
                         .trim());
 
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
-    }
-
-    @Test
-    public void findHotelsTest() {
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
+        
         TrivagoResultsPage resultsPage = homePage.openHomePage()
                                                  .enterDestination(DESTINATION)
                                                  .openRoomForm()
