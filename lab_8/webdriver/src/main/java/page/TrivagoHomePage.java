@@ -14,7 +14,7 @@ public class TrivagoHomePage {
 
     private By roomFormDivLocator = By.xpath("//div[@class='pt-4 px-2']");
 
-    private By numberOfAdultsInputLocator = By.xpath("//input[@id='number-input-13']");
+    private By numberOfAdultsInputLocator = By.xpath("//input[@class='input room-filters__input']");
 
     private By searchButtonLocator = By.xpath("//span[text()='Search']");
 
