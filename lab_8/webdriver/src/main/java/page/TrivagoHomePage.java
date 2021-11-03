@@ -86,11 +86,9 @@ public class TrivagoHomePage {
     
     private String getTextStaleElementReferenceException(By locator) {
         try {
-            WebElement element = findElementByLocatorStaleElementReferenceException(locator);
-            return element.getText();
+            return findElementByLocatorStaleElementReferenceException(locator).getText();
         } catch (StaleElementReferenceException e) {
-            WebElement element = findElementByLocatorStaleElementReferenceException(locator);
-            return element.getText();
+            return findElementByLocatorStaleElementReferenceException(locator).getText();
         }
     }
 }
