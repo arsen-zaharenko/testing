@@ -29,12 +29,7 @@ public class TrivagoHomePageSearchFormTest {
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
     @BeforeTest
-    public void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-    }
+    setupBrowser()
 
     @Test
     public void emptyDestinationFieldTest() {
@@ -50,12 +45,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    public void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-    }
+    setupBrowser()
     
     @Test
     public void bigGroupHintTest() {
@@ -70,12 +60,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    public void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-    }
+    setupBrowser()
     
     @Test
     public void maxNumberOfAdultsTest() {
@@ -97,12 +82,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    public void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-    }
+    setupBrowser()
     
     @Test
     public void findHotelsTest() {
@@ -116,6 +96,13 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertTrue(resultsPage.isInitialized());
     }
 
+    private void setupBrowser() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+    }
+    
     private WebElement findElementByLocator(By locator) {
         return new WebDriverWait(driver, 60)
                 .until(ExpectedConditions
