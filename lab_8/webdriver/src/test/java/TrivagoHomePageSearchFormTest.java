@@ -28,7 +28,7 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeTest
     public void setupBrowser() {
         FirefoxOptions options = new FirefoxOptions();
         options.setHeadless(true);
@@ -49,6 +49,14 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
     
+    @BeforeTest
+    public void setupBrowser() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+    }
+    
     @Test
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -59,6 +67,14 @@ public class TrivagoHomePageSearchFormTest {
                                                 .getBigGroupHintText();
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
+    }
+    
+    @BeforeTest
+    public void setupBrowser() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
     }
     
     @Test
@@ -80,6 +96,14 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
     }
     
+    @BeforeTest
+    public void setupBrowser() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+    }
+    
     @Test
     public void findHotelsTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -90,11 +114,6 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void tearDownBrowser() {
-        driver = null;
     }
 
     private WebElement findElementByLocator(By locator) {
