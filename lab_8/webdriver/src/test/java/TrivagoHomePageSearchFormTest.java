@@ -25,7 +25,6 @@ public class TrivagoHomePageSearchFormTest {
 
     private By roomFormApplyButtonLocator = By.xpath("//button[@data-role='applyConfigBtn']");
 
-    private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
     @BeforeMethod
@@ -73,7 +72,7 @@ public class TrivagoHomePageSearchFormTest {
         numberOfAdultsSpan = homePage.findElementByLocatorStaleElementReferenceException(numberOfAdultsSpanLocator);
 
         final int maxNumberOfAdults = Integer
-                .parseInt(homePage.getTextStaleElementReferenceException(numberOfAdultsSpan, numberOfAdultsSpanLocator)
+                .parseInt(homePage.getTextStaleElementReferenceException(numberOfAdultsSpanLocator)
                         .replace("Guests","")
                         .trim());
 
