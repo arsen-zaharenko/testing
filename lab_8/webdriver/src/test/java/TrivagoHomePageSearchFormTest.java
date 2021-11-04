@@ -29,7 +29,7 @@ public class TrivagoHomePageSearchFormTest {
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
     @BeforeTest
-    setupBrowser()
+    setupBrowser();
 
     @Test
     public void emptyDestinationFieldTest() {
@@ -45,7 +45,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    setupBrowser()
+    setupBrowser();
     
     @Test
     public void bigGroupHintTest() {
@@ -60,7 +60,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    setupBrowser()
+    setupBrowser();
     
     @Test
     public void maxNumberOfAdultsTest() {
@@ -82,7 +82,7 @@ public class TrivagoHomePageSearchFormTest {
     }
     
     @BeforeTest
-    setupBrowser()
+    setupBrowser();
     
     @Test
     public void findHotelsTest() {
