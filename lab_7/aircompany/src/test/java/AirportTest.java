@@ -37,8 +37,8 @@ public class AirportTest {
     private static final PassengerPlane passengerPlaneWithMaxPassengerCapacity =
             new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
 
-    private static final Comparator<Plane> PLANE_COMPARATOR_BY_MAX_LOAD_CAPACITY
-            = Comparator.comparingInt(Plane::getMaxLoadCapacity);
+    private static final Comparator<Plane> PLANE_COMPARATOR_BY_MAX_LOAD_CAPACITY =
+            Comparator.comparingInt(Plane::getMaxLoadCapacity);
 
     @Test
     public void hasTransportMilitaryPlaneTest() {
@@ -55,11 +55,10 @@ public class AirportTest {
     public void sortPlanesByMaxLoadCapacityTest() {
         Airport airport = new Airport(planes);
         airport.sortPlanesByMaxLoadCapacity();
-        Assert.assertEquals(airport.getPlanes()
-                                   .stream()
-                                   .sorted(PLANE_COMPARATOR_BY_MAX_LOAD_CAPACITY)
-                                   .collect(Collectors.toList()),
-                planes);
+        Assert.assertEquals(planes, airport.getPlanes()
+                                    .stream()
+                                    .sorted(PLANE_COMPARATOR_BY_MAX_LOAD_CAPACITY)
+                                    .collect(Collectors.toList()));
     }
 
     @Test
