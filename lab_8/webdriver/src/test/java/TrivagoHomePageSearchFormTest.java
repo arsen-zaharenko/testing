@@ -37,7 +37,7 @@ public class TrivagoHomePageSearchFormTest {
     }
 
     @Test
-    public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
+    public void emptyDestinationFieldTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .searchHotels();
@@ -47,14 +47,23 @@ public class TrivagoHomePageSearchFormTest {
         final String destinationExceptionText = getTextStaleElementReferenceException(destinationException, destinationExceptionLocator);
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
+    }
     
+    @Test
+    public void bigGroupHintTest() {
+        TrivagoHomePage homePage = new TrivagoHomePage(driver);
+        
         final String bigGroupHintText = homePage.openHomePage()
                                                 .openRoomForm()
                                                 .fillAdultsField(BIG_NUMBER_OF_ADULTS)
                                                 .getBigGroupHintText();
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
-        
+    }
+    
+    @Test
+    public void maxNumberOfAdultsTest() {
+        TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .openRoomForm()
                 .fillAdultsField(BIG_NUMBER_OF_ADULTS);
@@ -69,7 +78,11 @@ public class TrivagoHomePageSearchFormTest {
                         .trim());
 
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
-        
+    }
+    
+    @Test
+    public void findHotelsTest() {
+        TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoResultsPage resultsPage = homePage.openHomePage()
                                                  .enterDestination(DESTINATION)
                                                  .openRoomForm()
