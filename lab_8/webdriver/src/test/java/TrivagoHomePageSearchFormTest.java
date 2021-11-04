@@ -29,7 +29,7 @@ public class TrivagoHomePageSearchFormTest {
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
     @Test
-    public void emptyDestinationFieldTest() {
+    public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
         
@@ -40,14 +40,6 @@ public class TrivagoHomePageSearchFormTest {
         final String destinationExceptionText = homePage.getTextStaleElementReferenceException(destinationExceptionLocator);
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
-    }
-    
-    @Test
-    public void bigGroupHintTest() {
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-        
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
         
         final String bigGroupHintText = homePage.openHomePage()
                                                 .openRoomForm()
@@ -55,14 +47,7 @@ public class TrivagoHomePageSearchFormTest {
                                                 .getBigGroupHintText();
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
-    }
-    
-    @Test
-    public void maxNumberOfAdultsTest() {
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
         
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .openRoomForm()
                 .fillAdultsField(BIG_NUMBER_OF_ADULTS);
@@ -77,12 +62,6 @@ public class TrivagoHomePageSearchFormTest {
                         .trim());
 
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
-    }
-    
-    @Test
-    public void findHotelsTest() {
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
         
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoResultsPage resultsPage = homePage.openHomePage()
