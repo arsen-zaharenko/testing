@@ -42,9 +42,9 @@ public class TrivagoHomePageSearchFormTest {
         homePage.openHomePage()
                 .searchHotels();
 
-        destinationException = findElementByLocatorStaleElementReferenceException(destinationExceptionLocator);
+        destinationException = homePage.findElementByLocatorStaleElementReferenceException(destinationExceptionLocator);
 
-        final String destinationExceptionText = getTextStaleElementReferenceException(destinationException, destinationExceptionLocator);
+        final String destinationExceptionText = homePage.getTextStaleElementReferenceException(destinationException, destinationExceptionLocator);
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
@@ -68,12 +68,12 @@ public class TrivagoHomePageSearchFormTest {
                 .openRoomForm()
                 .fillAdultsField(BIG_NUMBER_OF_ADULTS);
 
-        findElementByLocatorAndClickStaleElementReferenceException(roomFormApplyButtonLocator);
+        homePage.findElementByLocatorAndClickStaleElementReferenceException(roomFormApplyButtonLocator);
 
-        numberOfAdultsSpan = findElementByLocatorStaleElementReferenceException(numberOfAdultsSpanLocator);
+        numberOfAdultsSpan = homePage.findElementByLocatorStaleElementReferenceException(numberOfAdultsSpanLocator);
 
         final int maxNumberOfAdults = Integer
-                .parseInt(getTextStaleElementReferenceException(numberOfAdultsSpan, numberOfAdultsSpanLocator)
+                .parseInt(homePage.getTextStaleElementReferenceException(numberOfAdultsSpan, numberOfAdultsSpanLocator)
                         .replace("Guests","")
                         .trim());
 
@@ -90,40 +90,5 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
-    }
-    
-    private WebElement findElementByLocator(By locator) {
-        return new WebDriverWait(driver, 60)
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(locator));
-    }
-
-    private WebElement findElementByLocatorStaleElementReferenceException(By locator) {
-        try {
-            return findElementByLocator(locator);
-        } catch (StaleElementReferenceException e) {
-            return findElementByLocator(locator);
-        }
-    }
-
-    private WebElement findElementByLocatorAndClickStaleElementReferenceException(By locator) {
-        try {
-            WebElement element = findElementByLocator(locator);
-            element.click();
-            return element;
-        } catch (StaleElementReferenceException e) {
-            WebElement element = findElementByLocator(locator);
-            element.click();
-            return element;
-        }
-    }
-
-    private String getTextStaleElementReferenceException(WebElement element, By locator) {
-        try {
-            return element.getText();
-        } catch (StaleElementReferenceException e) {
-            element = findElementByLocatorStaleElementReferenceException(locator);
-            return element.getText();
-        }
     }
 }
