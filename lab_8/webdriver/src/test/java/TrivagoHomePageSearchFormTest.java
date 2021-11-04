@@ -36,9 +36,6 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
-        
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .searchHotels();
@@ -69,7 +66,6 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
         
-        TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoResultsPage resultsPage = homePage.openHomePage()
                                                  .enterDestination(DESTINATION)
                                                  .openRoomForm()
