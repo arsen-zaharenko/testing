@@ -57,13 +57,13 @@ public class TrivagoHomePage {
         return new TrivagoResultsPage(driver);
     }
 
-    private WebElement findElementByLocator(By locator) {
-        return new WebDriverWait(driver, 60)
+    public WebElement findElementByLocator(By locator) {
+        return new WebDriverWait(driver, 20)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(locator));
     }
 
-    private WebElement findElementByLocatorStaleElementReferenceException(By locator) {
+    public WebElement findElementByLocatorStaleElementReferenceException(By locator) {
         try {
             return findElementByLocator(locator);
         } catch (StaleElementReferenceException e) {
@@ -71,7 +71,7 @@ public class TrivagoHomePage {
         }
     }
     
-    private WebElement findElementByLocatorAndClickStaleElementReferenceException(By locator) {
+    public WebElement findElementByLocatorAndClickStaleElementReferenceException(By locator) {
         try {
             WebElement element = findElementByLocator(locator);
             element.click();
@@ -83,7 +83,7 @@ public class TrivagoHomePage {
         }
     }
     
-    private String getTextStaleElementReferenceException(By locator) {
+    public String getTextStaleElementReferenceException(By locator) {
         try {
             return findElementByLocatorStaleElementReferenceException(locator).getText();
         } catch (StaleElementReferenceException e) {
