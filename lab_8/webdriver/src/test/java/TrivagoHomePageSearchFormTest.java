@@ -12,6 +12,7 @@ import page.TrivagoResultsPage;
 
 public class TrivagoHomePageSearchFormTest {
     private WebDriver driver;
+    private FirefoxOptions options = new FirefoxOptions().setHeadless(true);
 
     private static final String DESTINATION = "Minsk";
     private static final String DESTINATION_EXCEPTION_TEXT = "To start, tell us where you're going";
@@ -29,8 +30,6 @@ public class TrivagoHomePageSearchFormTest {
 
     @Test
     public void emptyDestinationFieldTest() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
         
@@ -45,8 +44,6 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void bigGroupHintTest() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
         
@@ -62,8 +59,6 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void maxNumberOfAdultsTest() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
         
@@ -86,8 +81,6 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void findHotelsTest() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
         
