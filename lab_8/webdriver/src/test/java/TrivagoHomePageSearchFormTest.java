@@ -27,16 +27,13 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
-    @BeforeMethod
-    private void setupBrowser() {
+    @Test
+    public void emptyDestinationFieldTest() {
         FirefoxOptions options = new FirefoxOptions();
         options.setHeadless(true);
         driver = new FirefoxDriver(options);
         driver.manage().window().setSize(new Dimension(1000, 1000));
-    }
-
-    @Test
-    public void emptyDestinationFieldTest() {
+        
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .searchHotels();
@@ -48,6 +45,11 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void bigGroupHintTest() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+        
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         
         final String bigGroupHintText = homePage.openHomePage()
@@ -60,6 +62,11 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void maxNumberOfAdultsTest() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+        
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         homePage.openHomePage()
                 .openRoomForm()
@@ -79,6 +86,11 @@ public class TrivagoHomePageSearchFormTest {
     
     @Test
     public void findHotelsTest() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+        
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoResultsPage resultsPage = homePage.openHomePage()
                                                  .enterDestination(DESTINATION)
@@ -87,10 +99,5 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
-    }
-    
-    @AfterMethod(alwaysRun = true)
-    public void tearDownBrowser() {
-        driver = null;
     }
 }
