@@ -28,8 +28,13 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
-    @BeforeTest
-    setupBrowser();
+    @BeforeMethod
+    private void setupBrowser() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+    }
 
     @Test
     public void emptyDestinationFieldTest() {
@@ -44,9 +49,6 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
     
-    @BeforeTest
-    setupBrowser();
-    
     @Test
     public void bigGroupHintTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -58,9 +60,6 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertEquals(BIG_GROUP_HINT_TEXT, bigGroupHintText);
     }
-    
-    @BeforeTest
-    setupBrowser();
     
     @Test
     public void maxNumberOfAdultsTest() {
@@ -81,9 +80,6 @@ public class TrivagoHomePageSearchFormTest {
         Assert.assertEquals(MAX_NUMBER_OF_ADULTS, maxNumberOfAdults);
     }
     
-    @BeforeTest
-    setupBrowser();
-    
     @Test
     public void findHotelsTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -94,13 +90,6 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
-    }
-
-    private void setupBrowser() {
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-        driver = new FirefoxDriver(options);
-        driver.manage().window().setSize(new Dimension(1000, 1000));
     }
     
     private WebElement findElementByLocator(By locator) {
