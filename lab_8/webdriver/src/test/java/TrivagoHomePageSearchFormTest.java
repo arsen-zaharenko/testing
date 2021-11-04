@@ -28,6 +28,12 @@ public class TrivagoHomePageSearchFormTest {
     private WebElement numberOfAdultsSpan;
     private By numberOfAdultsSpanLocator = By.xpath("//span[@class='dealform-button__label']");
 
+    @BeforeMethod(alwaysRun = true)
+    public void setupBrowser() {
+        driver = new FirefoxDriver(options);
+        driver.manage().window().setSize(new Dimension(1000, 1000));
+    }
+    
     @Test
     public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
         driver = new FirefoxDriver(options);
@@ -71,5 +77,10 @@ public class TrivagoHomePageSearchFormTest {
                                                  .searchHotels();
 
         Assert.assertTrue(resultsPage.isInitialized());
+    }
+    
+    @AfterMethod(alwaysRun = true)
+    public void tearDownBrowser() {
+        driver.quit();
     }
 }
