@@ -20,7 +20,6 @@ public class TrivagoHomePageSearchFormTest {
     private static final int BIG_NUMBER_OF_ADULTS = 99;
     private static final int MAX_NUMBER_OF_ADULTS = 48;
 
-    private WebElement destinationException;
     private By destinationExceptionLocator = By.xpath("(//*[contains(text(),\"To start, tell us where you're going\")])[2]");
 
     private By roomFormApplyButtonLocator = By.xpath("//button[@data-role='applyConfigBtn']");
@@ -42,9 +41,7 @@ public class TrivagoHomePageSearchFormTest {
         homePage.openHomePage()
                 .searchHotels();
 
-        destinationException = homePage.findElementByLocatorStaleElementReferenceException(destinationExceptionLocator);
-
-        final String destinationExceptionText = homePage.getTextStaleElementReferenceException(destinationException, destinationExceptionLocator);
+        final String destinationExceptionText = homePage.getTextStaleElementReferenceException(destinationExceptionLocator);
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     }
