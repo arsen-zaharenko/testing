@@ -91,4 +91,9 @@ public class TrivagoHomePageSearchFormTest {
 
         Assert.assertTrue(resultsPage.isInitialized());
     }
+    
+    @AfterMethod(alwaysRun = true)
+    public void tearDownBrowser() {
+        driver = null;
+    }
 }
