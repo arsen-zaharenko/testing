@@ -1,6 +1,7 @@
 package airport;
 
 import model.ClassificationLevel;
+import model.ExperimentalType;
 import model.MilitaryType;
 import plane.ExperimentalPlane;
 import plane.MilitaryPlane;
@@ -57,30 +58,17 @@ public class Airport {
         return militaryPlanes;
     }
 
-    public List<MilitaryPlane> getTransportMilitaryPlanes() {
+    public List<MilitaryPlane> getMilitaryPlanesByCertainType(MilitaryType militaryType) {
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
+        List<MilitaryPlane> militaryPlanesByCertainType = new ArrayList<>();
 
         for (MilitaryPlane militaryPlane : militaryPlanes) {
-            if (militaryPlane.getType() == MilitaryType.TRANSPORT) {
-                transportMilitaryPlanes.add(militaryPlane);
+            if (militaryPlane.getType() == militaryType) {
+                militaryPlanesByCertainType.add(militaryPlane);
             }
         }
 
-        return transportMilitaryPlanes;
-    }
-
-    public List<MilitaryPlane> getBomberMilitaryPlanes() {
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
-
-        for (MilitaryPlane militaryPlane : militaryPlanes) {
-            if (militaryPlane.getType() == MilitaryType.BOMBER) {
-                bomberMilitaryPlanes.add(militaryPlane);
-            }
-        }
-
-        return bomberMilitaryPlanes;
+        return militaryPlanesByCertainType;
     }
 
     public List<ExperimentalPlane> getExperimentalPlanes() {
@@ -94,19 +82,47 @@ public class Airport {
         return experimentalPlanes;
     }
 
-    public List<ExperimentalPlane> getUnclassifiedExperimentalPlanes() {
+    public List<ExperimentalPlane> getExperimentalPlanesByCertainType(ExperimentalType experimentalType) {
         List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
-        List<ExperimentalPlane> unclassifiedExperimentalPlanes = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanesByCertainType = new ArrayList<>();
 
         for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
-            if (experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED) {
-                unclassifiedExperimentalPlanes.add(experimentalPlane);
+            if (experimentalPlane.getType() == experimentalType) {
+                experimentalPlanesByCertainType.add(experimentalPlane);
             }
         }
-        return unclassifiedExperimentalPlanes;
+        return experimentalPlanesByCertainType;
     }
 
-    public void sortPlanesByMaxDistance() {
+    public List<ExperimentalPlane> getExperimentalPlanesByCertainClassificationLevel(ClassificationLevel classificationLevel) {
+        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
+        List<ExperimentalPlane> experimentalPlanesByCertainClassificationLevel = new ArrayList<>();
+
+        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
+            if (experimentalPlane.getClassificationLevel() == classificationLevel) {
+                experimentalPlanesByCertainClassificationLevel.add(experimentalPlane);
+            }
+        }
+        return experimentalPlanesByCertainClassificationLevel;
+    }
+
+    public List<ExperimentalPlane> getExperimentalPlanesByCertainTypeAndClassificationLevel(
+            ExperimentalType experimentalType, ClassificationLevel classificationLevel) {
+        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
+        List<ExperimentalPlane> experimentalPlanesByCertainTypeAndClassificationLevel = new ArrayList<>();
+
+        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
+            if (experimentalPlane.getType() == experimentalType &&
+                experimentalPlane.getClassificationLevel() == classificationLevel) {
+                experimentalPlanesByCertainTypeAndClassificationLevel.add(experimentalPlane);
+            }
+        }
+        return experimentalPlanesByCertainTypeAndClassificationLevel;
+    }
+
+    public void sortPlanesByModel() { planes.sort(Comparator.comparing(Plane::getModel)); }
+
+    public void sortPlanesByMaxFlightDistance() {
         planes.sort(Comparator.comparingInt(Plane::getMaxFlightDistance));
     }
 
@@ -121,5 +137,18 @@ public class Airport {
     @Override
     public String toString() {
         return "Airport{" + "Planes=" + planes + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airport airport = (Airport) o;
+        return Objects.equals(planes, airport.planes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(planes);
     }
 }
