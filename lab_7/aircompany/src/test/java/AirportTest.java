@@ -53,7 +53,7 @@ public class AirportTest {
     private static final Comparator<Plane> PLANE_COMPARATOR_BY_MAX_LOAD_CAPACITY
             = Comparator.comparingInt(Plane::getMaxLoadCapacity);
 
-    private static final int AIRPORT_HASH_CODE = 313696400;
+    private static final int AIRPORT_HASH_CODE = 238563343;
 
     @Test
     public void hasPlanesTest() {
