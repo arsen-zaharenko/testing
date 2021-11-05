@@ -154,9 +154,4 @@ public class AirportTest {
                                    .collect(Collectors.toList()),
                 planes);
     }
-
-    @Test
-    public void compareAirportHashCodeTest() {
-        Assert.assertEquals(new Airport(planes).hashCode(), AIRPORT_HASH_CODE);
-    }
 }
