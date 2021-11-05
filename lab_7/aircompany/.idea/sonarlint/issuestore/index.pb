@@ -13,9 +13,15 @@ Y
 )src/main/java/model/ExperimentalType.java,d\1\d1437ce7898e6bd00f47836a3555d47b5615dbf7
 U
 %src/main/java/model/MilitaryType.java,0\0\007f0669096561a7419e9ca295c9c76e0807620e
+Z
+*src/test/java/plane/MilitaryPlaneTest.java,b\a\bad09701d97732c793564bb7768423d3cb1b0e60
+^
+.src/test/java/plane/ExperimentalPlaneTest.java,a\4\a40869012b635d66946c2b981858d6c76f42102d
 R
 "src/main/java/airport/Airport.java,a\1\a1a23b3625425b2d9b70576af55b9c16712c5e2b
 V
 &src/test/java/airport/AirportTest.java,e\0\e05f00a562deb5395dd471649770b48191cb002b
 W
 'src/main/java/plane/PassengerPlane.java,0\6\06f69e6eb2f8121d14fc2a49a7683f07cc51caab
+[
++src/test/java/plane/PassengerPlaneTest.java,6\1\615a525c5958087d9946b3824b6b74d592c6caf0
