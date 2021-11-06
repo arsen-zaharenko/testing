@@ -11,7 +11,6 @@ public class Calculator {
         return leftTerm - rightTerm;
     }
 
-
     public Integer calculateProduct(Integer leftTerm, Integer rightTerm) {
         return leftTerm * rightTerm;
     }
