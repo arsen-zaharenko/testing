@@ -3,7 +3,9 @@ package calculator;
 import option.DivisionOption;
 
 public class Calculator {
-    public Integer calculateSum(Integer leftTerm, Integer rightTerm) { return leftTerm + rightTerm; }
+    public Integer calculateSum(Integer leftTerm, Integer rightTerm) { 
+        return leftTerm + rightTerm;
+    }
 
     public Integer calculateDifference(Integer leftTerm, Integer rightTerm) {
         return leftTerm - rightTerm;
