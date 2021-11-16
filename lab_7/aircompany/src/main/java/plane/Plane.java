@@ -51,9 +51,4 @@ public abstract class Plane {
                maxLoadCapacity == plane.maxLoadCapacity &&
                Objects.equals(model, plane.model);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-    }
 }

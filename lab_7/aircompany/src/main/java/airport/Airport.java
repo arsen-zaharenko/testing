@@ -9,6 +9,7 @@ import plane.PassengerPlane;
 import plane.Plane;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Airport {
     private final List<Plane> planes;
@@ -22,102 +23,54 @@ public class Airport {
     }
 
     public List<PassengerPlane> getPassengerPlanes() {
-        List<PassengerPlane> passengerPlanes = new ArrayList<>();
-
-        for (Plane plane : planes) {
-            if (plane instanceof PassengerPlane) {
-                passengerPlanes.add((PassengerPlane) plane);
-            }
-        }
-
-        return passengerPlanes;
+        return planes.stream()
+                     .filter(PassengerPlane.class::isInstance)
+                     .map(PassengerPlane.class::cast)
+                     .collect(Collectors.toList());
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
-        PassengerPlane passengerPlaneWithMaxCapacity = passengerPlanes.get(0);
-
-        for (int i = 1; i < passengerPlanes.size(); i++) {
-            if (passengerPlanes.get(i).getPassengersCapacity() > passengerPlaneWithMaxCapacity.getPassengersCapacity()) {
-                passengerPlaneWithMaxCapacity = passengerPlanes.get(i);
-            }
-        }
-
-        return passengerPlaneWithMaxCapacity;
+        return Collections.max(getPassengerPlanes(), Comparator.comparing(PassengerPlane::getPassengersCapacity));
     }
 
     public List<MilitaryPlane> getMilitaryPlanes() {
-        List<MilitaryPlane> militaryPlanes = new ArrayList<>();
-
-        for (Plane plane : planes) {
-            if (plane instanceof MilitaryPlane) {
-                militaryPlanes.add((MilitaryPlane) plane);
-            }
-        }
-
-        return militaryPlanes;
+        return planes.stream()
+                     .filter(MilitaryPlane.class::isInstance)
+                     .map(MilitaryPlane.class::cast)
+                     .collect(Collectors.toList());
     }
 
     public List<MilitaryPlane> getMilitaryPlanesByCertainType(MilitaryType militaryType) {
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        List<MilitaryPlane> militaryPlanesByCertainType = new ArrayList<>();
-
-        for (MilitaryPlane militaryPlane : militaryPlanes) {
-            if (militaryPlane.getType() == militaryType) {
-                militaryPlanesByCertainType.add(militaryPlane);
-            }
-        }
-
-        return militaryPlanesByCertainType;
+        return getMilitaryPlanes().stream()
+                                  .filter(plane -> plane.getType().equals(militaryType))
+                                  .collect(Collectors.toList());
     }
 
     public List<ExperimentalPlane> getExperimentalPlanes() {
-        List<ExperimentalPlane> experimentalPlanes = new ArrayList<>();
-
-        for (Plane plane : planes) {
-            if (plane instanceof ExperimentalPlane) {
-                experimentalPlanes.add((ExperimentalPlane) plane);
-            }
-        }
-        return experimentalPlanes;
+        return planes.stream()
+                     .filter(ExperimentalPlane.class::isInstance)
+                     .map(ExperimentalPlane.class::cast)
+                     .collect(Collectors.toList());
     }
 
     public List<ExperimentalPlane> getExperimentalPlanesByCertainType(ExperimentalType experimentalType) {
-        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
-        List<ExperimentalPlane> experimentalPlanesByCertainType = new ArrayList<>();
-
-        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
-            if (experimentalPlane.getType() == experimentalType) {
-                experimentalPlanesByCertainType.add(experimentalPlane);
-            }
-        }
-        return experimentalPlanesByCertainType;
+        return getExperimentalPlanes().stream()
+                                      .filter(plane -> plane.getType().equals(experimentalType))
+                                      .collect(Collectors.toList());
     }
 
     public List<ExperimentalPlane> getExperimentalPlanesByCertainClassificationLevel(ClassificationLevel classificationLevel) {
-        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
-        List<ExperimentalPlane> experimentalPlanesByCertainClassificationLevel = new ArrayList<>();
-
-        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
-            if (experimentalPlane.getClassificationLevel() == classificationLevel) {
-                experimentalPlanesByCertainClassificationLevel.add(experimentalPlane);
-            }
-        }
-        return experimentalPlanesByCertainClassificationLevel;
+        return getExperimentalPlanes().stream()
+                                      .filter(plane -> plane.getClassificationLevel().equals(classificationLevel))
+                                      .collect(Collectors.toList());
     }
 
     public List<ExperimentalPlane> getExperimentalPlanesByCertainTypeAndClassificationLevel(
             ExperimentalType experimentalType, ClassificationLevel classificationLevel) {
-        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
-        List<ExperimentalPlane> experimentalPlanesByCertainTypeAndClassificationLevel = new ArrayList<>();
-
-        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
-            if (experimentalPlane.getType() == experimentalType &&
-                experimentalPlane.getClassificationLevel() == classificationLevel) {
-                experimentalPlanesByCertainTypeAndClassificationLevel.add(experimentalPlane);
-            }
-        }
-        return experimentalPlanesByCertainTypeAndClassificationLevel;
+        return getExperimentalPlanes().stream()
+                .filter(plane -> plane.getType().equals(experimentalType))
+                .filter(plane -> plane.getClassificationLevel().equals(classificationLevel))
+                .collect(Collectors.toList());
     }
 
     public void sortPlanesByModel() { planes.sort(Comparator.comparing(Plane::getModel)); }
@@ -132,23 +85,5 @@ public class Airport {
 
     public void sortPlanesByMaxLoadCapacity() {
         planes.sort(Comparator.comparingInt(Plane::getMaxLoadCapacity));
-    }
-
-    @Override
-    public String toString() {
-        return "Airport{" + "Planes=" + planes + '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Airport airport = (Airport) o;
-        return Objects.equals(planes, airport.planes);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(planes);
     }
 }
