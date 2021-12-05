@@ -16,7 +16,7 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private By locationDivLocator = By.xpath("//div[@class='d_E3']/div");
 
-    private By locationInputLocator = By.xpath("//input[@class='k_my-input']");
+    private By locationInputLocator = By.xpath("//input[@placeholder='From?']");
 
     private By searchButtonLocator = By.xpath("//button[@title='Search cars']");
 
