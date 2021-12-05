@@ -96,6 +96,7 @@ public class TrivagoHomePage extends AbstractPage {
 
     public TrivagoStaysResultsPage searchHotels() {
         findElementByLocatorAndClick(searchButtonLocator);
+        LOGGER.log(Level.INFO, "Searching...");
         return new TrivagoStaysResultsPage(driver);
     }
 
