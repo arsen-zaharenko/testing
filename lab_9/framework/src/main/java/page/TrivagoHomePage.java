@@ -14,21 +14,21 @@ public class TrivagoHomePage extends AbstractPage {
     private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars";
     private static final String FLIGHTS_PAGE_URL = "https://www.trivago.ca/flights";
 
-    private By destinationInputLocator = By.xpath("//input[@data-testid='search-input-field']");
+    private By destinationInputLocator = By.xpath("//input[@id='querytext']");
 
     private By destinationExceptionLocator = By.xpath("//div[@class='dealform__error-message']");
 
-    private By roomFormLocator = By.xpath("//button[@data-testid='guest-selector']");
+    private By roomFormLocator = By.xpath("//button[contains(@class,'button-guests')]");
 
-    private By roomFormDivLocator = By.xpath("//div[@data-testid='guest-selector-popover']");
+    private By roomFormDivLocator = By.xpath("//div[contains(@class,'guest-selector')]");
 
     private By bigGroupHintLocator = By.xpath("//a[@rel='nofollow noopener noreferrer']");
     
-    private By numberOfAdultsInputLocator = By.xpath("//input[@data-testid='adults-amount']");
+    private By numberOfAdultsInputLocator = By.xpath("//input[@id='adults-input']");
 
-    private By roomFormApplyButtonLocator = By.xpath("//button[@data-testid='guest-selector-apply']");
+    private By roomFormApplyButtonLocator = By.xpath("//button[text()='Apply']");
 
-    private By numberOfAdultsSpanLocator = By.xpath("//span[@data-testid='undefined-subline']");
+    private By numberOfAdultsSpanLocator = By.xpath("//span[contains(text(),'Guests')]");
 
     private By searchButtonLocator = By.xpath("//span[text()='Search']");
 
