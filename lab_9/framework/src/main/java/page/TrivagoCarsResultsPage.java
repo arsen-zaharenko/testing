@@ -12,16 +12,24 @@ public class TrivagoCarsResultsPage extends AbstractPage {
 
     private By currencyLocator = By.xpath("//div[@class='EuxN-Current']");
 
-    private By locationLocator = By.xpath("");
+    private By locationLocator = By.xpath("//div[@class='NbWx-locationInput']/div/div/div[2]");
 
     protected TrivagoCarsResultsPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isInitialized(String location, String currency) {
-        if (location.equals(1))
-        LOGGER.log(Level.INFO, "Location and currency are true");
-        return true;
+        System.out.println(findElementByLocatorAndGetText(locationLocator));
+        System.out.println(findElementByLocatorAndGetText(currencyLocator));
+        if (findElementByLocatorAndGetText(locationLocator).contains(location)
+            && findElementByLocatorAndGetText(currencyLocator).contains(currency)) {
+            LOGGER.log(Level.INFO, "Location and currency are true");
+            return true;
+        }
+
+        LOGGER.log(Level.ERROR, "Invalid location or currency");
+
+        return false;
     }
 
     @Override

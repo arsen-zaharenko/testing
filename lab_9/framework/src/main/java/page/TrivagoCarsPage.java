@@ -4,11 +4,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrivagoCarsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
@@ -17,7 +14,7 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private By currencyPickerButtonLocator = By.xpath("//div[contains(@class,'currency-picker')]");
 
-    private By locationDivLocator = By.xpath("//div[@aria-label='Pick-up location']");
+    private By locationDivLocator = By.xpath("//div[@class='NbWx-locationInput']");
 
     private By locationInputLocator = By.xpath("//input[@class='k_my-input']");
 
@@ -33,7 +30,8 @@ public class TrivagoCarsPage extends AbstractPage {
 
     public TrivagoCarsPage changeCurrency(String currency) {
         findElementByLocatorAndClick(currencyPickerButtonLocator);
-        findElementByLocatorAndClick(By.xpath("//a[@data-cur='" + currency + "']"));
+        findElementByLocatorAndClick(By.xpath("//div[contains(@class,'currency-tooltip-symbol')" +
+                                              " and (text()='" + currency + "')]"));
         LOGGER.log(Level.INFO, "Currency is changed by [{}]", currency);
         return this;
     }

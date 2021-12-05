@@ -6,7 +6,7 @@ import page.TrivagoHomePage;
 import util.CommonConditions;
 
 public class TrivagoCarsPageSearchFormTest extends CommonConditions {
-    private static final String CURRENCY = "BYN";
+    private static final String CURRENCY = "Br";
     private static final String LOCATION = "Minsk";
     private static final String LOCATION_EXCEPTION_TEXT = "Please pick a pick-up location.";
 
