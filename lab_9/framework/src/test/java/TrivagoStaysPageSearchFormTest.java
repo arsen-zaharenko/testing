@@ -23,6 +23,7 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
     */
+        Assert.assertTrue(false);
     }
 /*
     @Test
