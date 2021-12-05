@@ -39,6 +39,8 @@ public class TrivagoHomePage extends AbstractPage {
     public TrivagoHomePage openHomePage() {
         driver.get(HOMEPAGE_URL);
         LOGGER.log(Level.INFO, "Home page is opened");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,5000)");
         return this;
     }
 
