@@ -19,8 +19,6 @@ public class TrivagoCarsResultsPage extends AbstractPage {
     }
 
     public boolean isInitialized(String location, String currency) {
-        System.out.println(findElementByLocatorAndGetText(locationLocator));
-        System.out.println(findElementByLocatorAndGetText(currencyLocator));
         if (findElementByLocatorAndGetText(locationLocator).contains(location)
             && findElementByLocatorAndGetText(currencyLocator).contains(currency)) {
             LOGGER.log(Level.INFO, "Location and currency are true");
