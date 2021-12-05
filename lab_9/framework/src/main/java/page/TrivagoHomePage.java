@@ -39,8 +39,6 @@ public class TrivagoHomePage extends AbstractPage {
     public TrivagoHomePage openHomePage() {
         driver.get(HOMEPAGE_URL);
         LOGGER.log(Level.INFO, "Home page is opened");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,5000)");
         return this;
     }
 
@@ -100,7 +98,7 @@ public class TrivagoHomePage extends AbstractPage {
 
     public TrivagoStaysResultsPage searchHotels() {
         findElementByLocatorAndClick(searchButtonLocator);
-        LOGGER.log(Level.INFO, "Stays are found");
+        LOGGER.log(Level.INFO, "Looking for the stays");
         return new TrivagoStaysResultsPage(driver);
     }
 
