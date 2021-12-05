@@ -26,7 +26,7 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
     public void findCarsForBelarusianRublesTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoCarsResultsPage resultsPage = homePage.openCarsPage()
-                                                     //.changeCurrency(CURRENCY)
+                                                     .changeCurrency(CURRENCY)
                                                      .enterLocation(LOCATION)
                                                      .searchCars();
 
