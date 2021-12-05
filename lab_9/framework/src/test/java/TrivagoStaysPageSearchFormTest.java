@@ -17,15 +17,13 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
         homePage.openHomePage();
-        /*        .searchHotels();
+                .searchHotels();
 
         final String destinationExceptionText = homePage.getDestinationExceptionText();
 
         Assert.assertEquals(DESTINATION_EXCEPTION_TEXT, destinationExceptionText);
-    */
-        Assert.assertTrue(false);
     }
-/*
+
     @Test
     public void bigGroupHintStaysPageTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -63,5 +61,4 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
 
         Assert.assertTrue(resultsPage.isInitialized());
     }
-    */
 }
