@@ -14,7 +14,7 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private By currencyPickerButtonLocator = By.xpath("//div[contains(@class,'currency-picker')]");
 
-    private By locationDivLocator = By.xpath("//div[@class='d_E3']/div");
+    private By locationDivLocator = By.xpath("//div[contains(@class,'locationInput')]");
 
     private By locationInputLocator = By.xpath("//input[@placeholder='From?']");
 
