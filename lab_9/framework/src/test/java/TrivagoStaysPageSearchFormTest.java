@@ -16,7 +16,7 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
     public void emptyDestinationFieldStaysPageTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
-        homePage.openHomePage();
+        homePage.openHomePage()
                 .searchHotels();
 
         final String destinationExceptionText = homePage.getDestinationExceptionText();
