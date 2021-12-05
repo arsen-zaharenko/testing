@@ -1,11 +1,13 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TrivagoCarsPage;
-import page.TrivagoFlightsPage;
+import page.TrivagoCarsResultsPage;
 import page.TrivagoHomePage;
 import util.CommonConditions;
 
 public class TrivagoCarsPageSearchFormTest extends CommonConditions {
+    private static final String CURRENCY = "UAH";
+    private static final String LOCATION = "Minsk";
     private static final String LOCATION_EXCEPTION_TEXT = "Please pick a pick-up location.";
 
     @Test
@@ -13,7 +15,7 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
         TrivagoCarsPage carsPage = homePage.openCarsPage()
-                .findCars();
+                                           .findCars();
 
         final String locationExceptionText = carsPage.getLocationExceptionText();
 
@@ -22,6 +24,12 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
 
     @Test
     public void findCarsForUkrainianHryvniasTest() {
+        TrivagoHomePage homePage = new TrivagoHomePage(driver);
+        TrivagoCarsResultsPage resultsPage = homePage.openCarsPage()
+                                                     .changeCurrency(CURRENCY)
+                                                     .enterLocation(LOCATION)
+                                                     .searchCars();
 
+        Assert.assertTrue(resultsPage.isInitialized(LOCATION, CURRENCY));
     }
 }
