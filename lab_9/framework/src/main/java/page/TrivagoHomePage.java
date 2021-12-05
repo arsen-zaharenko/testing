@@ -26,7 +26,7 @@ public class TrivagoHomePage extends AbstractPage {
     
     private By numberOfAdultsInputLocator = By.xpath("//input[@id='adults-input']");
 
-    private By roomFormApplyButtonLocator = By.xpath("//button[text()='Apply']");
+    private By roomFormApplyButtonLocator = By.xpath("//button[contains(@class,'apply-config')]");
 
     private By numberOfAdultsSpanLocator = By.xpath("//span[contains(text(),'Guests')]");
 
