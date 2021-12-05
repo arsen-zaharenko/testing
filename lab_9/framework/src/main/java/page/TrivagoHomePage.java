@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TrivagoHomePage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private static final String HOMEPAGE_URL = "https://www.trivago.com/";
-    private static final String CARS_PAGE_URL = "https://www.trivago.com/cars";
-    private static final String FLIGHTS_PAGE_URL = "https://www.trivago.com/flights";
+    private static final String HOMEPAGE_URL = "https://www.trivago.ca/";
+    private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars";
+    private static final String FLIGHTS_PAGE_URL = "https://www.trivago.ca/flights";
 
     private By destinationInputLocator = By.xpath("//input[@data-testid='search-input-field']");
 
