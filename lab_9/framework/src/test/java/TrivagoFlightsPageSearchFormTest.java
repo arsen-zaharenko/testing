@@ -10,7 +10,7 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
         TrivagoFlightsPage flightsPage = homePage.openFlightsPage()
-                .findFlights();
+                                                 .findFlights();
 
         Assert.assertTrue(flightsPage.isLocationExceptionVisible());
     }

@@ -1,5 +1,8 @@
 package page;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrivagoFlightsPage extends AbstractPage{
+    private static final Logger LOGGER = LogManager.getRootLogger();
+
     private By flightsFrame = By.xpath("//iframe[contains(@class,kayak)]");
 
     private By searchButtonLocator = By.xpath("//div[@class='search-form-inner']/div/div[2]");
@@ -16,6 +21,7 @@ public class TrivagoFlightsPage extends AbstractPage{
 
     public TrivagoFlightsPage(WebDriver driver) {
         super(driver);
+        LOGGER.log(Level.INFO, "Flights page is opened");
         driver.switchTo().frame(findElementByLocator(flightsFrame));
     }
 
@@ -32,37 +38,23 @@ public class TrivagoFlightsPage extends AbstractPage{
         return isInitialized(formExceptionLocator);
     }
 
-    private WebElement defaultFindElementByLocator(By locator) {
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(locator));
+    @Override
+    protected WebElement defaultFindElementByLocator(By locator) {
+        return super.defaultFindElementByLocator(locator);
     }
 
-    public WebElement findElementByLocator(By locator) {
-        try {
-            return defaultFindElementByLocator(locator);
-        } catch (StaleElementReferenceException e) {
-            return defaultFindElementByLocator(locator);
-        }
+    @Override
+    protected WebElement findElementByLocator(By locator) {
+        return super.findElementByLocator(locator);
     }
 
-    public WebElement findElementByLocatorAndClick(By locator) {
-        try {
-            WebElement element = defaultFindElementByLocator(locator);
-            element.click();
-            return element;
-        } catch (StaleElementReferenceException e) {
-            WebElement element = defaultFindElementByLocator(locator);
-            element.click();
-            return element;
-        }
+    @Override
+    protected WebElement findElementByLocatorAndClick(By locator) {
+        return super.findElementByLocatorAndClick(locator);
     }
 
-    public String findElementByLocatorAndGetText(By locator) {
-        try {
-            return findElementByLocator(locator).getText();
-        } catch (StaleElementReferenceException e) {
-            return findElementByLocator(locator).getText();
-        }
+    @Override
+    protected String findElementByLocatorAndGetText(By locator) {
+        return super.findElementByLocatorAndGetText(locator);
     }
 }

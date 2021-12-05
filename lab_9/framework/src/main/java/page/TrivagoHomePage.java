@@ -10,25 +10,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TrivagoHomePage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private static final String HOMEPAGE_URL = "https://www.trivago.com/";
-    private static final String CARS_PAGE_URL = "https://www.trivago.com/cars";
-    private static final String FLIGHTS_PAGE_URL = "https://www.trivago.com/flights";
+    private static final String HOMEPAGE_URL = "https://www.trivago.ca/";
+    private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars";
+    private static final String FLIGHTS_PAGE_URL = "https://www.trivago.ca/flights";
 
-    private By destinationInputLocator = By.xpath("//input[@data-testid='search-input-field']");
+    private By destinationInputLocator = By.xpath("//input[@id='querytext']");
 
-    private By destinationExceptionLocator = By.xpath("//div[@data-testid='search-input-error']/p");
+    private By destinationExceptionLocator = By.xpath("//div[@class='dealform__error-message']");
 
-    private By roomFormLocator = By.xpath("//button[@data-testid='guest-selector']");
+    private By roomFormLocator = By.xpath("//button[contains(@class,'button-guests')]");
 
-    private By roomFormDivLocator = By.xpath("//div[@data-testid='guest-selector-popover']");
+    private By roomFormDivLocator = By.xpath("//div[contains(@class,'guest-selector')]");
 
     private By bigGroupHintLocator = By.xpath("//a[@rel='nofollow noopener noreferrer']");
     
-    private By numberOfAdultsInputLocator = By.xpath("//input[@data-testid='adults-amount']");
+    private By numberOfAdultsInputLocator = By.xpath("//input[@id='adults-input']");
 
-    private By roomFormApplyButtonLocator = By.xpath("//button[@data-testid='guest-selector-apply']");
+    private By roomFormApplyButtonLocator = By.xpath("//button[contains(@class,'apply-config')]");
 
-    private By numberOfAdultsSpanLocator = By.xpath("//span[@data-testid='undefined-subline']");
+    private By numberOfAdultsSpanLocator = By.xpath("//span[contains(text(),'Guests')]");
 
     private By searchButtonLocator = By.xpath("//span[text()='Search']");
 
@@ -44,13 +44,11 @@ public class TrivagoHomePage extends AbstractPage {
 
     public TrivagoCarsPage openCarsPage() {
         driver.get(CARS_PAGE_URL);
-        LOGGER.log(Level.INFO, "Cars page is opened");
         return new TrivagoCarsPage(driver);
     }
 
     public TrivagoFlightsPage openFlightsPage() {
         driver.get(FLIGHTS_PAGE_URL);
-        LOGGER.log(Level.INFO, "Flights page is opened");
         return new TrivagoFlightsPage(driver);
     }
 
@@ -98,41 +96,26 @@ public class TrivagoHomePage extends AbstractPage {
 
     public TrivagoStaysResultsPage searchHotels() {
         findElementByLocatorAndClick(searchButtonLocator);
-        LOGGER.log(Level.INFO, "Stays are found");
         return new TrivagoStaysResultsPage(driver);
     }
 
-    private WebElement defaultFindElementByLocator(By locator) {
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions
-                        .presenceOfElementLocated(locator));
+    @Override
+    protected WebElement defaultFindElementByLocator(By locator) {
+        return super.defaultFindElementByLocator(locator);
     }
 
-    public WebElement findElementByLocator(By locator) {
-        try {
-            return defaultFindElementByLocator(locator);
-        } catch (StaleElementReferenceException e) {
-            return defaultFindElementByLocator(locator);
-        }
+    @Override
+    protected WebElement findElementByLocator(By locator) {
+        return super.findElementByLocator(locator);
     }
-    
-    public WebElement findElementByLocatorAndClick(By locator) {
-        try {
-            WebElement element = defaultFindElementByLocator(locator);
-            element.click();
-            return element;
-        } catch (StaleElementReferenceException e) {
-            WebElement element = defaultFindElementByLocator(locator);
-            element.click();
-            return element;
-        }
+
+    @Override
+    protected WebElement findElementByLocatorAndClick(By locator) {
+        return super.findElementByLocatorAndClick(locator);
     }
-    
-    public String findElementByLocatorAndGetText(By locator) {
-        try {
-            return findElementByLocator(locator).getText();
-        } catch (StaleElementReferenceException e) {
-            return findElementByLocator(locator).getText();
-        }
+
+    @Override
+    protected String findElementByLocatorAndGetText(By locator) {
+        return super.findElementByLocatorAndGetText(locator);
     }
 }
