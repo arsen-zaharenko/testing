@@ -24,8 +24,8 @@ public class DriverSingleton {
 //                    driver = new ChromeDriver(new ChromeOptions().setHeadless(false));
 //                }
 //            }
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
             driver.manage().window().maximize();
         }
 
