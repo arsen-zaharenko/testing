@@ -16,7 +16,7 @@ public class TrivagoHomePage extends AbstractPage {
 
     private By destinationInputLocator = By.xpath("//input[@data-testid='search-input-field']");
 
-    private By destinationExceptionLocator = By.xpath("//div[@data-testid='search-input-error']/p");
+    private By destinationExceptionLocator = By.xpath("//div[@class='dealform__error-message']");
 
     private By roomFormLocator = By.xpath("//button[@data-testid='guest-selector']");
 
