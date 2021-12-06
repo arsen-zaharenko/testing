@@ -62,6 +62,10 @@ public class TrivagoFlightsPage extends AbstractPage{
     public boolean isLocationExceptionVisible() {
         return isInitialized(formExceptionLocator);
     }
+    
+    public boolean isSameLocationsExceptionVisible() {
+        return true;
+    }
 
     @Override
     protected WebElement defaultFindElementByLocator(By locator) {
