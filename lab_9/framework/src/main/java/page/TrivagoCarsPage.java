@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 public class TrivagoCarsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars#/cars";
+    private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars#/cars/";
     
     private String fromLocation;
     
