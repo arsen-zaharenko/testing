@@ -26,6 +26,8 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private By dateToSpanLocator = By.xpath("//span[contains(@class,'to-date')]");
 
+    private By searchButtonLocator = By.xpath("//button[@title='Search cars']");
+    
     private By locationExceptionLocator = By.className("IGR4-error");
 
     public TrivagoCarsPage(WebDriver driver) {
