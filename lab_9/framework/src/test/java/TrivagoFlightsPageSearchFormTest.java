@@ -33,6 +33,7 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
                                                      .getFromAndToLocations();
 
         Assert.assertTrue(locations[0].equals(changedLocations[1]) && locations[1].equals(changedLocations[0]));
+        Assert.assertTrue(flightsPage.isSameLocationsExceptionVisible());
     }
 
     @Test
