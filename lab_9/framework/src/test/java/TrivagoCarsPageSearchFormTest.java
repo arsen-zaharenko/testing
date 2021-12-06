@@ -15,7 +15,7 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoCarsPage carsPage = homePage.openCarsPage();
 
-        carsPage.searchCars();
+        carsPage.searchCarsByButton();
 
         final String locationExceptionText = carsPage.getLocationExceptionText();
 
@@ -28,7 +28,7 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
         TrivagoCarsResultsPage resultsPage = homePage.openCarsPage()
                                                      .changeCurrency(CURRENCY)
                                                      .enterLocation(LOCATION)
-                                                     .searchCars();
+                                                     .searchCarsByURL();
 
         Assert.assertTrue(resultsPage.isInitialized(LOCATION, CURRENCY));
     }
