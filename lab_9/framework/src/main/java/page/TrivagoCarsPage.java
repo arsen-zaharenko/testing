@@ -72,6 +72,8 @@ public class TrivagoCarsPage extends AbstractPage {
         final String[] dateFrom = findElementByLocatorAndGetText(dateFromSpanLocator).split("/");
         final String[] dateTo = findElementByLocatorAndGetText(dateToSpanLocator).split("/");
         
+        findElementByLocatorAndClick(By.tagName("h1"));
+        
         String location;
         if (findElementByLocator(locationDivLocator).isDisplayed()) {
             findElementByLocatorAndClick(locationDivLocator);
