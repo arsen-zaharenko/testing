@@ -37,26 +37,11 @@ public class TrivagoCarsPage extends AbstractPage {
     }
 
     public TrivagoCarsPage enterLocation(String location) {
-        if (findElementByLocator(locationDivLocator).isDisplayed()) {
-            findElementByLocatorAndClick(locationDivLocator);
-            
-            if (findElementByLocator(locationInputLocator).isDisplayed()) {
-                findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
-            } 
-            else {
-                findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
-            }
-        } else {
-            findElementByLocatorAndClick(locationDivLocator);
-            
-            if (findElementByLocator(locationInputLocator).isDisplayed()) {
-                findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
-            } 
-            else {
-                findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
-            }
-        }
-       
+        findElementByLocatorAndClick(locationDivLocator);
+        findElementByLocatorAndClick(locationDivLocator);
+        findElementByLocatorAndClick(locationDivLocator);
+        
+        findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
         findElementByLocatorAndClick(By.xpath("//li[contains(@aria-label,'" + location + "')]"));
         LOGGER.log(Level.INFO, "Location [{}] is entered", location);
         return this;
