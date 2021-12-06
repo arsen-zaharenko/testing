@@ -12,6 +12,8 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars#/cars";
     
+    private String fromLocation;
+    
     private By carsFrame = By.xpath("//iframe[contains(@class,kayak)]");
 
     private By currencyPickerButtonLocator = By.xpath("//div[contains(@class,'currency-picker')]");
@@ -57,6 +59,8 @@ public class TrivagoCarsPage extends AbstractPage {
             findElementByLocatorAndClick(locationDivLocator);
             findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
         }
+        fromLocation = findElementByLocator(By.xpath("//li[contains(@aria-label,'" + location + "')]"))
+                       .getAttribute("aria-label");
         findElementByLocatorAndClick(By.xpath("//li[contains(@aria-label,'" + location + "')]"));
         LOGGER.log(Level.INFO, "Location [{}] is entered", location);
         return this;
@@ -74,21 +78,7 @@ public class TrivagoCarsPage extends AbstractPage {
         
         findElementByLocatorAndClick(By.tagName("h1"));
         
-        String location;
-        if (findElementByLocator(locationDivLocator).isDisplayed()) {
-            findElementByLocatorAndClick(locationDivLocator);
-        } else {
-            findElementByLocatorAndClick(locationDivLocator);
-        }
-
-        if (findElementByLocator(locationInputLocator).isDisplayed()) {
-            location = findElementByLocator(locationInputLocator).getAttribute("value")
-                                                                 .replaceAll(" ", "");
-        } else {
-            findElementByLocatorAndClick(locationDivLocator);
-            location = findElementByLocator(locationInputLocator).getAttribute("value")
-                                                                 .replaceAll(" ", "");
-        }
+        final String location = fromLocation.replaceAll(" ", "");
 
         driver.get(CARS_PAGE_URL + location + "-c9524" + "/" +
                    dateFrom[2] + "-" + dateFrom[1] + "-" + dateFrom[0] + "/" +
