@@ -60,7 +60,12 @@ public class TrivagoCarsPage extends AbstractPage {
         return this;
     }
 
-    public TrivagoCarsResultsPage searchCars() {
+    public TrivagoCarsResultsPage searchCarsByButton() {
+        findElementByLocatorAndClick(searchButtonLocator);
+        return new TrivagoCarsResultsPage(driver);
+    }
+    
+    public TrivagoCarsResultsPage searchCarsByURL() {
         findElementByLocatorAndClick(dateDivLocator);
         final String[] dateFrom = findElementByLocatorAndGetText(dateFromSpanLocator).split("/");
         final String[] dateTo = findElementByLocatorAndGetText(dateToSpanLocator).split("/");
