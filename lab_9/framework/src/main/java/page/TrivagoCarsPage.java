@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrivagoCarsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
@@ -39,14 +37,8 @@ public class TrivagoCarsPage extends AbstractPage {
     }
 
     public TrivagoCarsPage enterLocation(String location) {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions
-                                                       .elementToBeClickable(locationDivLocator));
         findElementByLocatorAndClick(locationDivLocator);
-        
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions
-                                                       .elementToBeClickable(locationInputLocator));
         findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
-        
         findElementByLocatorAndClick(By.xpath("//li[contains(@aria-label,'" + location + "')]"));
         LOGGER.log(Level.INFO, "Location [{}] is entered", location);
         return this;
