@@ -19,6 +19,11 @@ public class TrivagoCarsResultsPage extends AbstractPage {
     }
 
     public boolean isInitialized(String location, String currency) {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions
+                        .visibilityOf(findElementByLocator(locationLocator)));
+        
+        
         System.out.println(driver.getCurrentUrl());
         if (findElementByLocatorAndGetText(locationLocator).contains(location)
             && findElementByLocatorAndGetText(currencyLocator).contains(currency)) {
