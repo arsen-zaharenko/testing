@@ -12,15 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TrivagoCarsResultsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private By currencyLocator = By.xpath("//div[@class='EuxN-Current']");
-
-    private By locationLocator = By.xpath("//div[@class='NbWx-locationInput']/div/div/div[2]");
-
     protected TrivagoCarsResultsPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isInitialized(String location, String currency) {
+        By currencyLocator = By.xpath("//div[@class='EuxN-Current']");
+        By locationLocator = By.xpath("//div[@class='NbWx-locationInput']/div/div/div[2]");
+        
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions
                         .visibilityOf(findElementByLocator(locationLocator)));
