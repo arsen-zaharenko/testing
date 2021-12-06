@@ -38,18 +38,18 @@ public class TrivagoCarsPage extends AbstractPage {
 
     public TrivagoCarsPage enterLocation(String location) {
         if (findElementByLocator(locationDivLocator).isDisplayed()) {
-            LOGGER.log(Level.INFO, "A");
+            LOGGER.log(Level.INFO, "Location div is displayed");
             findElementByLocatorAndClick(locationDivLocator);
         } else {
-            LOGGER.log(Level.INFO, "B");
+            LOGGER.log(Level.INFO, "Location div is not immediately displayed");
             findElementByLocatorAndClick(locationDivLocator);
         }
 
         if (findElementByLocator(locationInputLocator).isDisplayed()) {
-            LOGGER.log(Level.INFO, "AA");
+            LOGGER.log(Level.INFO, "Location input is displayed");
             findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
         } else {
-            LOGGER.log(Level.INFO, "BB");
+            LOGGER.log(Level.INFO, "Location input is not immediately displayed");
             findElementByLocatorAndClick(locationDivLocator);
             findElementByLocatorAndClick(locationInputLocator).sendKeys(location);
         }
