@@ -16,22 +16,8 @@ public class TrivagoCarsResultsPage extends AbstractPage {
         super(driver);
     }
 
-    public boolean isInitialized(String location, String currency) {
-        LOGGER.log(Level.INFO, driver.getCurrentUrl());
-        LOGGER.log(Level.INFO, driver.getPageSource());
-        /*
-        By currencyLocator = By.xpath("//div[@class='EuxN-Current']");
-        By locationLocator = By.xpath("//div[@class='NbWx-locationInput']/div/div/div[2]");
-        
-        if (findElementByLocatorAndGetText(locationLocator).contains(location)
-            && findElementByLocatorAndGetText(currencyLocator).contains(currency)) {
-            LOGGER.log(Level.INFO, "Location and currency are true");
-            return true;
-        }
-
-        LOGGER.log(Level.ERROR, "Invalid location or currency");
-*/
-        return false;
+    public boolean isInitialized() {
+        return findElementByLocator(By.tagName("iframe")).isDisplayed();
     }
 
     @Override
