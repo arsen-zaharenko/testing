@@ -25,8 +25,9 @@ public class TrivagoCarsResultsPage extends AbstractPage {
                 .until(ExpectedConditions
                         .visibilityOf(findElementByLocator(locationLocator)));
         
-        
         System.out.println(driver.getCurrentUrl());
+        System.out.println(driver.getPageSource());
+        
         if (findElementByLocatorAndGetText(locationLocator).contains(location)
             && findElementByLocatorAndGetText(currencyLocator).contains(currency)) {
             LOGGER.log(Level.INFO, "Location and currency are true");
