@@ -30,6 +30,6 @@ public class TrivagoCarsPageSearchFormTest extends CommonConditions {
                                                      .enterLocation(LOCATION)
                                                      .searchCarsByURL();
 
-        Assert.assertTrue(resultsPage.isInitialized(LOCATION, CURRENCY));
+        Assert.assertTrue(resultsPage.isInitialized());
     }
 }
