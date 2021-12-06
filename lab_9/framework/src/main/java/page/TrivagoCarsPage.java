@@ -71,10 +71,22 @@ public class TrivagoCarsPage extends AbstractPage {
         findElementByLocatorAndClick(dateDivLocator);
         final String[] dateFrom = findElementByLocatorAndGetText(dateFromSpanLocator).split("/");
         final String[] dateTo = findElementByLocatorAndGetText(dateToSpanLocator).split("/");
+        
+        String location;
+        if (findElementByLocator(locationDivLocator).isDisplayed()) {
+            findElementByLocatorAndClick(locationDivLocator);
+        } else {
+            findElementByLocatorAndClick(locationDivLocator);
+        }
 
-        findElementByLocatorAndClick(locationDivLocator);
-        final String location = findElementByLocator(locationInputLocator).getAttribute("value")
-                                                                          .replaceAll(" ", "");
+        if (findElementByLocator(locationInputLocator).isDisplayed()) {
+            location = findElementByLocator(locationInputLocator).getAttribute("value")
+                                                                 .replaceAll(" ", "");
+        } else {
+            findElementByLocatorAndClick(locationDivLocator);
+            location = findElementByLocator(locationInputLocator).getAttribute("value")
+                                                                 .replaceAll(" ", "");
+        }
 
         driver.get(CARS_PAGE_URL + location + "-c9524" + "/" +
                    dateFrom[2] + "-" + dateFrom[1] + "-" + dateFrom[0] + "/" +
