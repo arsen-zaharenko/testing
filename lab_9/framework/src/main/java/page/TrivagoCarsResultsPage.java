@@ -14,6 +14,7 @@ public class TrivagoCarsResultsPage extends AbstractPage {
 
     protected TrivagoCarsResultsPage(WebDriver driver) {
         super(driver);
+        driver.switchTo().parentFrame();
     }
 
     public boolean isInitialized(String location, String currency) {
