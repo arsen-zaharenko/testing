@@ -68,6 +68,7 @@ public class TrivagoCarsPage extends AbstractPage {
 
     public TrivagoCarsResultsPage searchCarsByButton() {
         findElementByLocatorAndClick(searchButtonLocator);
+        LOGGER.log(Level.INFO, "Searching...");
         return new TrivagoCarsResultsPage(driver);
     }
     
