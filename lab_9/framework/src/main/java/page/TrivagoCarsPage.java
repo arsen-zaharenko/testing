@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 public class TrivagoCarsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
+    private static final String CARS_PAGE_URL = "https://www.trivago.ca/cars#/cars";
+    
     private By carsFrame = By.xpath("//iframe[contains(@class,kayak)]");
 
     private By currencyPickerButtonLocator = By.xpath("//div[contains(@class,'currency-picker')]");
@@ -18,7 +20,11 @@ public class TrivagoCarsPage extends AbstractPage {
 
     private By locationInputLocator = By.xpath("//*[@placeholder='From?']");
 
-    private By searchButtonLocator = By.xpath("//button[@title='Search cars']");
+    private By dateDivLocator = By.xpath("//span[contains(@class,'date')]");
+
+    private By dateFromSpanLocator = By.xpath("//span[contains(@class,'from-date')]");
+
+    private By dateToSpanLocator = By.xpath("//span[contains(@class,'to-date')]");
 
     private By locationExceptionLocator = By.className("IGR4-error");
 
@@ -59,7 +65,17 @@ public class TrivagoCarsPage extends AbstractPage {
     }
 
     public TrivagoCarsResultsPage searchCars() {
-        findElementByLocatorAndClick(searchButtonLocator);
+        findElementByLocatorAndClick(dateDivLocator);
+        final String[] dateFrom = findElementByLocatorAndGetText(dateFromSpanLocator).split("/");
+        final String[] dateTo = findElementByLocatorAndGetText(dateToSpanLocator).split("/");
+
+        findElementByLocatorAndClick(locationDivLocator);
+        final String location = findElementByLocator(locationInputLocator).getAttribute("value")
+                                                                          .replaceAll(" ", "");
+
+        driver.get(CARS_PAGE_URL + location + "-c9524" + "/" +
+                   dateFrom[2] + "-" + dateFrom[1] + "-" + dateFrom[0] + "/" +
+                   dateTo[2] + "-" + dateTo[1] + "-" + dateTo[0] + ";map");
         LOGGER.log(Level.INFO, "Searching...");
         return new TrivagoCarsResultsPage(driver);
     }
