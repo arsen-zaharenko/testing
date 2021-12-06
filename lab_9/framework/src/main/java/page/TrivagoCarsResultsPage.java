@@ -31,7 +31,7 @@ public class TrivagoCarsResultsPage extends AbstractPage {
 
         LOGGER.log(Level.ERROR, "Invalid location or currency");
 */
-        return true;
+        return false;
     }
 
     @Override
