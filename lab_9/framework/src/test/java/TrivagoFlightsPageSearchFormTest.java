@@ -5,8 +5,9 @@ import page.TrivagoHomePage;
 import util.CommonConditions;
 
 public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
-    private static final String LOCATION_FROM = "";
-    private static final String LOCATION_TO = "";
+    private static final String FROM_LOCATION = "London";
+    private static final String TO_LOCATION = "Minsk";
+    private static final String SAME_LOCATION = "Paris";
     private static final String TRIP_TYPE = "Multi-city";
     private static final int MAX_NUMBER_OF_FORMS = 6;
 
@@ -21,18 +22,33 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
     }
 
     @Test
-    public void sameFromAndToFieldsFlightsPageTest() {
+    public void swapFromAndToFieldsFlightsPageTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoFlightsPage flightsPage = homePage.openFlightsPage();
 
-        final String[] locations = flightsPage.enterFromLocation(LOCATION_FROM)
-                                              .enterToLocation(LOCATION_TO)
+        final String[] locations = flightsPage.enterFromLocation(FROM_LOCATION)
+                                              .enterToLocation(TO_LOCATION)
                                               .getFromAndToLocations();
 
         final String[] changedLocations = flightsPage.swapLocations()
                                                      .getFromAndToLocations();
 
         Assert.assertTrue(locations[0].equals(changedLocations[1]) && locations[1].equals(changedLocations[0]));
+    }
+
+    @Test
+    public void sameFromAndToFieldsFlightsPageTest() {
+        TrivagoHomePage homePage = new TrivagoHomePage(driver);
+        TrivagoFlightsPage flightsPage = homePage.openFlightsPage();
+
+        final String[] locations = flightsPage.enterFromLocation(SAME_LOCATION)
+                                              .enterToLocation(SAME_LOCATION)
+                                              .getFromAndToLocations();
+
+        final String[] changedLocations = flightsPage.swapLocations()
+                                                     .getFromAndToLocations();
+
+        Assert.assertTrue(locations[0].equals(changedLocations[0]) && locations[1].equals(changedLocations[1]));
         Assert.assertTrue(flightsPage.isSameLocationsExceptionVisible());
     }
 
