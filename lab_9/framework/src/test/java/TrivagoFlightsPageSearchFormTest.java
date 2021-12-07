@@ -1,13 +1,16 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TrivagoFlightsPage;
+import page.TrivagoFlightsResultsPage;
 import page.TrivagoHomePage;
 import util.CommonConditions;
 
 public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
-    private static final String FROM_LOCATION = "London";
-    private static final String TO_LOCATION = "Minsk";
-    private static final String SAME_LOCATION = "Paris";
+    private static final String DEPART_DATE = "15/12/2021";
+    private static final String RETURN_DATE = "20/12/2021";
+    private static final String FROM_LOCATION = "Berlin";
+    private static final String TO_LOCATION = "London";
+    private static final String SAME_LOCATION = "Helsinki";
     private static final String TRIP_TYPE = "Multi-city";
     private static final int MAX_NUMBER_OF_FORMS = 6;
 
@@ -39,16 +42,13 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
     @Test
     public void sameFromAndToFieldsFlightsPageTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
-        TrivagoFlightsPage flightsPage = homePage.openFlightsPage();
 
-        final String[] locations = flightsPage.enterFromLocation(SAME_LOCATION)
-                                              .enterToLocation(SAME_LOCATION)
-                                              .getFromAndToLocations();
+        TrivagoFlightsPage flightsPage = homePage.openFlightsPage()
+                                                 .enterDate(DEPART_DATE, RETURN_DATE)
+                                                 .enterSameLocations(SAME_LOCATION);
 
-        final String[] changedLocations = flightsPage.swapLocations()
-                                                     .getFromAndToLocations();
+        flightsPage.searchFlights();
 
-        Assert.assertTrue(locations[0].equals(changedLocations[0]) && locations[1].equals(changedLocations[1]));
         Assert.assertTrue(flightsPage.isSameLocationsExceptionVisible());
     }
 
