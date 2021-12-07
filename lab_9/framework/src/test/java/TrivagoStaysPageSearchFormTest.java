@@ -11,7 +11,7 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
     private static final int NUMBER_OF_ADULTS = 4;
     private static final int BIG_NUMBER_OF_ADULTS = 99;
     private static final int MAX_NUMBER_OF_ADULTS = 48;
-/*
+    
     @Test
     public void emptyDestinationFieldStaysPageTest() {
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
@@ -61,5 +61,4 @@ public class TrivagoStaysPageSearchFormTest extends CommonConditions {
 
         Assert.assertTrue(resultsPage.isInitialized());
     }
-    */
 }
