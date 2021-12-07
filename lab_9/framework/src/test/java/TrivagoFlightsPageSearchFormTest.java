@@ -1,7 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TrivagoFlightsPage;
-import page.TrivagoFlightsResultsPage;
 import page.TrivagoHomePage;
 import util.CommonConditions;
 
