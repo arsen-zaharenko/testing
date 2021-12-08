@@ -1,7 +1,6 @@
 package service;
 
 import model.Date;
-import util.TestDataReader;
 
 public class DatesCreator {
     public static final String TESTDATA_DEPART_DATE = "testdata.date.depart";

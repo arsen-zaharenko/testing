@@ -1,7 +1,6 @@
 package service;
 
 import model.Location;
-import util.TestDataReader;
 
 public class LocationsCreator {
     public static final String TESTDATA_FROM_LOCATION = "testdata.location.from";
