@@ -1,14 +1,15 @@
-import model.Date;
-import model.Location;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TrivagoFlightsPage;
 import page.TrivagoHomePage;
-import service.DatesCreator;
-import service.LocationsCreator;
 import util.CommonConditions;
 
 public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
+    private static final String FROM_LOCATION = "Berlin";
+    private static final String TO_LOCATION = "London";
+    private static final String SAME_LOCATION = "Helsinki";
+    private static final String DEPART_DATE = "15/12/2021";
+    private static final String RETURN_DATE = "20/12/2021";
     private static final String TRIP_TYPE = "Multi-city";
     private static final int MAX_NUMBER_OF_FORMS = 6;
 
@@ -24,12 +25,11 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
 
     @Test
     public void swapFromAndToFieldsFlightsPageTest() {
-        Location testLocations = LocationsCreator.locationsFromProperty();
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
         TrivagoFlightsPage flightsPage = homePage.openFlightsPage();
 
-        final String[] locations = flightsPage.enterFromLocation(testLocations.getFromLocation())
-                                              .enterToLocation(testLocations.getToLocation())
+        final String[] locations = flightsPage.enterFromLocation(FROM_LOCATION)
+                                              .enterToLocation(TO_LOCATION)
                                               .getFromAndToLocations();
 
         final String[] changedLocations = flightsPage.swapLocations()
@@ -40,13 +40,11 @@ public class TrivagoFlightsPageSearchFormTest extends CommonConditions {
 
     @Test
     public void sameFromAndToFieldsFlightsPageTest() {
-        Location testLocations = LocationsCreator.sameLocationsFromProperty();
-        Date testDates = DatesCreator.datesFromProperty();
         TrivagoHomePage homePage = new TrivagoHomePage(driver);
 
         TrivagoFlightsPage flightsPage = homePage.openFlightsPage()
-                                                 .enterDate(testDates.getDepartDate(), testDates.getReturnDate())
-                                                 .enterSameLocations(testLocations.getFromLocation());
+                                                 .enterDate(DEPART_DATE, RETURN_DATE)
+                                                 .enterSameLocations(SAME_LOCATION);
 
         flightsPage.searchFlights();
 
